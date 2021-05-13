@@ -1,8 +1,7 @@
 # projectEvo
 
-Integrantes:
-
-Manuel Alfredo Max Rafael Paitan\n
-Danna Elizabeth Gabriel Cheng\n
-Christopher Neil Tafur Morales\n
-Will Jefferson Herrera Pizarro
+Integrantes:<br><br>
+Manuel Alfredo Max Rafael Paitan <br>
+Danna Elizabeth Gabriel Cheng <br>
+Christopher Neil Tafur Morales <br>
+Will Jefferson Herrera Pizarro <br>
