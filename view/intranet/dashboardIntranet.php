@@ -1,0 +1,1 @@
+<h1>intranet admin</h1>
