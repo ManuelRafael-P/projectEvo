@@ -27,18 +27,18 @@
                             <table id="tableSystem" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Id de Producto</th>
-                                        <th>Id de categoria de producto</th>
-                                        <th>Id de color</th>
-                                        <th>Nombre de producto</th>
-                                        <th>Talla XXS</th>
-                                        <th>Talla XS</th>
-                                        <th>Talla S</th>
-                                        <th>Talla M</th>
-                                        <th>Talla L</th>
-                                        <th>Talla XL</th>
-                                        <th>Talla XXL</th>
-                                        <th>Precio de producto</th>
+                                        <th>ID Producto</th>
+                                        <th>ID Cat. Producto</th>
+                                        <th>ID Color</th>
+                                        <th>Nombre de Producto</th>
+                                        <th>XXS</th>
+                                        <th>XS</th>
+                                        <th>S</th>
+                                        <th>M</th>
+                                        <th>L</th>
+                                        <th>XL</th>
+                                        <th>XXL</th>
+                                        <th>Precio</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -61,7 +61,6 @@
                                             <td><?php echo $c->PRODUCT_PRICE ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1" onclick="addToForm()">Editar</button>
-                                                <a href="?c=Color&a=deleteColor&id=<?php echo $c->PRODUCT_ID ?>" class="btn btn-danger">Eliminar</a>
                                             </td>
                                         </tr>
                                     <?php
@@ -84,10 +83,10 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="?c=Product&a=addOrUpdateProduct" method="post">
+                <form action="?c=Product&a=addProduct" enctype="multipart/form-data" method="post">
                     <div class="modal-body">
                         <?php
-                        $last_id = implode($this->productDao->getLastId());
+                        $last_id = $this->getNextId(implode($this->productDao->getLastId()));
                         ?>
                         <div class="row">
                             <div class="col">
@@ -100,13 +99,32 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="inputProductCategory">Categoria de producto</label>
-                                    <input type="text" class="form-control" name="inputProductCategory" id="inputProductCategory" placeholder="Ingrese categoria de producto">
+                                    <select class="form-control" name="inputProductCategory" id="inputProductCategory">
+                                        <option value="defaut">Elige categoria de producto</option>
+                                        <?php
+                                        foreach ($this->productCategoryDao->listNecessaryDataFromProductCategories() as $c) {
+                                        ?>
+                                            <option value="<?php echo $c->PRODUCT_CATEGORY_ID ?>"><?php echo $c->PRODUCT_CATEGORY_NAME ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label for="inputColorName">Color</label>
-                                    <input type="text" class="form-control" name="inputColorName" id="inputColorName" placeholder="Ingrese color">
+                                    <select class="form-control" name="inputColor" id="inputColor">
+                                        <option value="defaut">Elige color</option>
+                                        <?php
+                                        foreach ($this->colorDao->listNecesaryDataFromColors() as $c) {
+                                        ?>
+                                            <option value="<?php echo $c->COLOR_ID ?>"><?php echo $c->COLOR_NAME ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+
                                 </div>
                             </div>
                         </div>
@@ -121,8 +139,8 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="inputProductPrive">Precio de producto</label>
-                                    <input type="text" class="form-control" name="inputProductPrive" id="inputProductPrive" placeholder="Ingrese precio de producto">
+                                    <label for="inputProductPrice">Precio de producto</label>
+                                    <input type="text" class="form-control" name="inputProductPrice" id="inputProductPrice" placeholder="Ingrese precio de producto">
                                 </div>
                             </div>
                         </div>
@@ -184,7 +202,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="inputProductImage1">Imagen de producto 1</label>
-                                    <input type="file" class="form-control" name="inputProductImage1" id="inputProductImage1" placeholder="Ingrese imagen de producto 1">
+                                    <input type="file" class="form-control" name="inputProductImage1" id="inputProductImage1" placeholder="Ingrese imagen de producto 1" accept="image/*">
                                 </div>
                             </div>
                             <div class="col">

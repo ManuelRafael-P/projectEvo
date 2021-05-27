@@ -30,7 +30,6 @@
                                         <th>Id de color</th>
                                         <th>Nombre de color</th>
                                         <th>Fecha de registro</th>
-                                        <th>Fecha de actualización</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -42,7 +41,6 @@
                                             <th scope="row"><?php echo $c->COLOR_ID ?></th>
                                             <td><?php echo $c->COLOR_NAME ?></td>
                                             <td><?php echo $c->DT_REGISTRY ?></td>
-                                            <td><?php echo $c->DT_UPDATE ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1" onclick="addToForm(<?php echo $c->COLOR_ID ?>,'<?php echo $c->COLOR_NAME ?>')">Editar</button>
                                                 <a href="?c=Color&a=deleteColor&id=<?php echo $c->COLOR_ID ?>" class="btn btn-danger">Eliminar</a>
