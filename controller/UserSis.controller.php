@@ -8,7 +8,7 @@ class UserSisController
 
     public function __construct()
     {
-        $this->UserSisDao = new UserSisDAO();
+        $this->userSisDao = new UserSisDAO();
     }
 
     public function adminUserSis()
@@ -20,34 +20,37 @@ class UserSisController
         require_once 'view/components/intranet/FooterIntranet.php';
     }
 
-    public function addOrUpdateUserSis()
+    public function addOrUpdateUser()
     {
-        // if (isset($_POST['inputProductCategoryId']) && isset($_POST['inputProductCategoryName'])) {
-        //     $object = new Product($_POST['inputProductCategoryId'], $_POST['inputProductCategoryName'], '', '');
-        //     if (!empty($object)) {
-        //         if (isset($_POST['add'])) {
-        //             $this->productDao->addRecord($object);
-        //             echo ("<script>window.location.replace('?c=ProductCategory&a=adminProductCategory&msg=add-success')</script>");
-        //         } else if (isset($_POST['update'])) {
-        //             $this->productDao->updateRecord($object);
-        //             echo ("<script>window.location.replace('?c=ProductCategory&a=adminProductCategory&msg=update-success')</script>");
-        //         }
-        //     } else {
-        //         echo ("<script>window.location.replace('?c=ProductCategory&a=adminProductCategory&error=empty-inputs')</script>");
-        //     }
-        // }
+        if (
+            isset($_POST['inputUserId']) && isset($_POST['inputNames']) && isset($_POST['inputSurnames']) && isset($_POST['inputEmail']) &&
+            isset($_POST['inputPhone']) && isset($_POST['inputAddress']) && isset($_POST['inputType']) && isset($_POST['inputAccountVerified'])
+        ) {
+            $object = new UserSis($_POST['inputUserId'], $_POST['inputNames'], $_POST['inputSurnames'], $_POST['inputEmail'], '', $_POST['inputAddress'], $_POST['inputPhone'], $_POST['inputType'], $_POST['inputAccountVerified'], '', '');
+            if (!empty($object)) {
+                if (isset($_POST['add'])) {
+                    $this->userSisDao->addRecord($object);
+                    echo ("<script>window.location.replace('?c=UserSis&a=adminUserSis&msg=add-success')</script>");
+                } else if (isset($_POST['update'])) {
+                    $this->userSisDao->updateRecord($object);
+                    echo ("<script>window.location.replace('?c=UserSis&a=adminUserSis&msg=update-success')</script>");
+                }
+            } else {
+                echo ("<script>window.location.replace('?c=UserSis&a=adminUserSis&error=empty-inputs')</script>");
+            }
+        }
     }
 
-    public function deleteUserSis()
+    public function deleteUser()
     {
-        // if (isset($_GET['id'])) {
-        //     if ($_GET['id'] != '') {
-        //         $object = new Product($_GET['id'], '', '', '');
-        //         $this->productDao->deleteRecord($object);
-        //         echo ("<script>window.location.replace('?c=ProductCategory&a=adminProductCategory&msg=delete-success')</script>");
-        //     } else {
-        //         echo ("<script>window.location.replace('?c=ProductCategory&a=adminProductCategory&error=empty-inputs')</script>");
-        //     }
-        // }
+        if (isset($_GET['id'])) {
+            if ($_GET['id'] != '') {
+                $object = new UserSis($_GET['id'], '', '', '', '', '', '', '', '', '', '');
+                $this->userSisDao->deleteRecord($object);
+                echo ("<script>window.location.replace('?c=UserSis&a=adminUserSis&msg=delete-success')</script>");
+            } else {
+                echo ("<script>window.location.replace('?c=UserSis&a=adminUserSis&error=empty-inputs')</script>");
+            }
+        }
     }
 }

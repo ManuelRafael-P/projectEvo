@@ -162,9 +162,13 @@ class SecurityController
                 $names = $this->userSisDao->getFullNameByEmail($email);
                 if (!empty($names)) {
                     $fullname = $names[0]->USER_NAMES . ' ' . $names[0]->USER_SURNAMES;
+
                     $r = $this->fillRestPswd($email);
+
                     $url = $this->generateUrl($r->getRestSelector(), $r->getRestToken(), "resetRequest");
+
                     $e = new Email($fullname, $email, $url);
+
                     $this->restPswdDao->deleteRecord($r->getRestEmail());
                     $this->restPswdDao->addRecord($r);
                     $this->emailDao->sendEmailToResetPassword($e);

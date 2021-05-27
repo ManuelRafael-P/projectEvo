@@ -39,7 +39,7 @@ class OrderDetailController
     {
         // if (isset($_GET['id'])) {
         //     if ($_GET['id'] != '') {
-        //         $object = new Product($_GET['id'], '', '', '');
+        //         $object = new Product($_GET['id'], '', '', '');  
         //         $this->productDao->deleteRecord($object);
         //         echo ("<script>window.location.replace('?c=ProductCategory&a=adminProductCategory&msg=delete-success')</script>");
         //     } else {
