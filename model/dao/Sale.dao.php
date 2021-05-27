@@ -36,6 +36,8 @@ class SaleDao
         }
     }
 
+    //CRUD
+
     public function addRecord(Sale $c)
     {
         try {
@@ -49,8 +51,8 @@ class SaleDao
     public function updateRecord(Sale $c)
     {
         try {
-            $stm = $this->pdo->prepare("UPDATE sales SET USER_ID = ?, TRANSACTION_KEY = ?,PAYPAL_DATA = ?, MAIL = ?, TOTAL = ?, STATUS = ?, DT_UPDATE = CURRENT_TIMESTAMP WHERE SALE_ID = ?");
-            $stm->execute(array($c->getUserId(), $c->getTransactionKey(), $c->getPaypalData(), $c->getMail(), $c->getTotal(), $c->getStatus(), $c->getSaleId()));
+            $stm = $this->pdo->prepare("UPDATE sales SET  STATUS = ?, DT_UPDATE = CURRENT_TIMESTAMP WHERE SALE_ID = ?");
+            $stm->execute(array($c->getStatus(), $c->getSaleId()));
         } catch (Exception $e) {
             die($e->getMessage());
         }

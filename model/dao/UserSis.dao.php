@@ -13,10 +13,10 @@ class UserSisDao
         }
     }
 
-    public function listUsersAdmin()
+    public function listUsers()
     {
         try {
-            $stm = $this->pdo->prepare("SELECT * FROM users WHERE USER_TYPE = 1");
+            $stm = $this->pdo->prepare("SELECT USER_ID, USER_NAMES, USER_SURNAMES, USER_EMAIL, USER_ADDRESS, USER_PHONE, USER_TYPE, USER_ACCOUNT_VERIFIED FROM users");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
@@ -24,7 +24,7 @@ class UserSisDao
         }
     }
 
-    public function getUserByEmailAndPassword($email,$password)
+    public function getUserByEmailAndPassword($email, $password)
     {
         try {
             $stm = $this->pdo->prepare("SELECT USER_ID,USER_NAMES,USER_SURNAMES,USER_EMAIL,USER_TYPE,USER_ACCOUNT_VERIFIED FROM users WHERE USER_EMAIL = ? AND USER_PASSWORD = ?");
@@ -106,6 +106,56 @@ class UserSisDao
                 $u->getAddress(),
                 $u->getPhone()
             ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    //CRUD
+
+    public function addRecord(UserSis $u)
+    {
+        try {
+            $sql = "INSERT INTO users (USER_ID, USER_NAMES, USER_SURNAMES, USER_EMAIL, USER_ADDRESS, USER_PHONE, USER_TYPE, USER_ACCOUNT_VERIFIED) VALUES(?,?,?,?,?,?,?,?)";
+            $this->pdo->prepare($sql)->execute(array(
+                $u->getUserId(),
+                $u->getNames(),
+                $u->getSurnames(),
+                $u->getEmail(),
+                $u->getAddress(),
+                $u->getPhone(),
+                $u->getUserType(),
+                $u->getAccountVerified()
+            ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function updateRecord(UserSis $u)
+    {
+        try {
+            $sql = "UPDATE users SET USER_NAMES = ?, USER_SURNAMES = ?, USER_EMAIL = ?, USER_ADDRESS = ?, USER_PHONE = ?, USER_TYPE = ?, USER_ACCOUNT_VERIFIED = ?, DT_UPDATE = CURRENT_TIMESTAMP WHERE USER_ID = ?";
+            $this->pdo->prepare($sql)->execute(array(
+                $u->getNames(),
+                $u->getSurnames(),
+                $u->getEmail(),
+                $u->getAddress(),
+                $u->getPhone(),
+                $u->getUserType(),
+                $u->getAccountVerified(),
+                $u->getUserId()
+            ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function deleteRecord(UserSis $u)
+    {
+        try {
+            $stm = $this->pdo->prepare("DELETE FROM users WHERE USER_ID = ?");
+            $stm->execute(array($u->getUserId()));
         } catch (Exception $e) {
             die($e->getMessage());
         }

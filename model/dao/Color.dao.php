@@ -25,6 +25,17 @@ class ColorDao
         }
     }
 
+    public function listNecesaryDataFromColors()
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT COLOR_ID, COLOR_NAME FROM colors");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function getLastId()
     {
         try {

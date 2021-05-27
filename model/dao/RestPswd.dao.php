@@ -13,6 +13,17 @@ class RestPwsdDao
         }
     }
 
+    public function listRestPswd()
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM restpswd");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function getRecordBySelectorAndTime($selector, $time)
     {
         try {
@@ -22,6 +33,16 @@ class RestPwsdDao
                 $time
             ));
             return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function deleteRecordByObject(RestPwsd $r)
+    {
+        try {
+            $stm = $this->pdo->prepare("DELETE from restpswd WHERE REST_PWD_ID = ?");
+            $stm->execute(array($r->getRestPswdId()));
         } catch (Exception $e) {
             die($e->getMessage());
         }

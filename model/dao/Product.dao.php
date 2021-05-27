@@ -25,6 +25,17 @@ class ProductDao
         }
     }
 
+    public function listProductImagesById($id)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT PRODUCT_IMAGE_1, PRODUCT_IMAGE_2, PRODUCT_IMAGE_3, PRODUCT_IMAGE_4 FROM products WHERE PRODUCT_ID");
+            $stm->execute(array($id));
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function getLastId()
     {
         try {
@@ -63,6 +74,32 @@ class ProductDao
             $stm->execute(array($c->getProductId()));
         } catch (Exception $e) {
             die($e->getMessage());
+        }
+    }
+
+    public function uploadProductFile($imgFile, $tmpDir, $imgSize, $productId, $imageNumber)
+    {
+
+        $uploadDir = "assets/productImages/";
+        $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION));
+        $validExtensions = array('jpeg', 'jpg', 'png', 'gif');
+
+        $imageNewName = $productId . '-' . $imageNumber . '.' . $imgExt;
+
+        if (in_array($imgExt, $validExtensions)) {
+            if ($imgSize < 5000000) {
+                move_uploaded_file($tmpDir, $uploadDir . $imageNewName);
+            } else {
+                $errorMsg = "La imagen es demasiado grande.";
+            }
+        } else {
+            $errorMsg = "La imagen no tiene una extensión valida";
+        }
+
+        if (isset($errorMsg)) {
+            return $errorMsg;
+        } else {
+            return $imageNewName;
         }
     }
 }
