@@ -60,7 +60,25 @@
                                             <td><?php echo $c->STOCK_SIZE_XXL ?></td>
                                             <td><?php echo $c->PRODUCT_PRICE ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1" onclick="addToForm()">Editar</button>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1" onclick="addToForm(
+                                                    '<?php echo $c->PRODUCT_ID ?>',
+                                                    <?php echo $c->PRODUCT_CATEGORY_ID ?>,
+                                                    <?php echo $c->COLOR_ID ?>,
+                                                    '<?php echo $c->PRODUCT_NAME ?>',
+                                                    '<?php echo $c->PRODUCT_DESCRIPTION ?>',
+                                                    <?php echo $c->STOCK_SIZE_XXS ?>,
+                                                    <?php echo $c->STOCK_SIZE_XS ?>,
+                                                    <?php echo $c->STOCK_SIZE_S ?>,
+                                                    <?php echo $c->STOCK_SIZE_M ?>,
+                                                    <?php echo $c->STOCK_SIZE_L ?>,
+                                                    <?php echo $c->STOCK_SIZE_XL ?>,
+                                                    <?php echo $c->STOCK_SIZE_XXL ?>,
+                                                    '<?php echo $c->PRODUCT_IMAGE_1 ?>',
+                                                    '<?php echo $c->PRODUCT_IMAGE_2 ?>',
+                                                    '<?php echo $c->PRODUCT_IMAGE_3 ?>',
+                                                    '<?php echo $c->PRODUCT_IMAGE_4 ?>',
+                                                    <?php echo $c->PRODUCT_PRICE ?>
+                                                )">Editar</button>
                                             </td>
                                         </tr>
                                     <?php
@@ -113,7 +131,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="inputColorName">Color</label>
+                                    <label for="inputColor">Color</label>
                                     <select class="form-control" name="inputColor" id="inputColor">
                                         <option value="defaut">Elige color</option>
                                         <?php
@@ -239,7 +257,7 @@
     </div>
 
     <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Editar Aula</h5>
@@ -247,11 +265,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="?c=Product&a=addOrUpdateProduct" method="post">
+                <form action="?c=Product&a=updateProduct" enctype="multipart/form-data" method="post">
                     <div class="modal-body">
-                        <?php
-                        $last_id = implode($this->productDao->getLastId());
-                        ?>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -268,14 +283,10 @@
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="inputColorName">Color</label>
-                                    <input type="text" class="form-control" name="inputColorName" id="inputColorNameE" placeholder="Ingrese color">
+                                    <label for="inputColor">Color</label>
+                                    <input type="text" class="form-control" name="inputColor" id="inputColorE" placeholder="Ingrese color">
                                 </div>
                             </div>
-                        </div>
-
-
-                        <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="inputProductName">Nombre de producto</label>
@@ -314,9 +325,6 @@
                                     <input type="number" class="form-control" name="inputStockSizeS" id="inputStockSizeSE" placeholder="Ingrese talla S">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="inputStockSizeM">Talla M</label>
@@ -332,7 +340,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="inputStockSizeXl">Talla XL</label>
-                                    <input type="number" class="form-control" name="inputStockSizeXl" id="inputStockSizXlE" placeholder="Ingrese talla XL">
+                                    <input type="number" class="form-control" name="inputStockSizeXl" id="inputStockSizeXlE" placeholder="Ingrese talla XL">
                                 </div>
                             </div>
                             <div class="co">
@@ -340,6 +348,37 @@
                                     <label for="inputStockSizeXxl">Talla XXL</label>
                                     <input type="number" class="form-control" name="inputStockSizeXxl" id="inputStockSizeXxlE" placeholder="Ingrese talla XXL">
                                 </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row my-2">
+                            <div class="col text-center">
+                                <span for="" id="nameImage01"></span>
+                            </div>
+                            <div class="col text-center">
+                                <span for="" id="nameImage02"></span>
+                            </div>
+                            <div class="col text-center">
+                                <span for="" id="nameImage03"></span>
+                            </div>
+                            <div class="col text-center">
+                                <span for="" id="nameImage04"></span>
+                            </div>
+                        </div>
+
+                        <div class="row my-2">
+                            <div class="col text-center">
+                                <img src="" alt="Imagen01" id="image01" class="img-fluid img-thumbnail" style="height:200px">
+                            </div>
+                            <div class="col text-center">
+                                <img src="" alt="Imagen02" id="image02" class="img-fluid img-thumbnail" style="height:200px">
+                            </div>
+                            <div class="col text-center">
+                                <img src="" alt="Imagen03" id="image03" class="img-fluid img-thumbnail" style="height:200px">
+                            </div>
+                            <div class="col text-center">
+                                <img src="" alt="Imagen04" id="image04" class="img-fluid img-thumbnail" style="height:200px">
                             </div>
                         </div>
 
@@ -384,10 +423,43 @@
     </div>
 
     <script>
-        function addToForm(colorId, colorName) {
-            $("#inputColorIdE").val(colorId);
-            $("#inputColorIdHiddenE").val(colorId);
-            $("#inputColorNameE").val(colorName);
+        function addToForm(productId, productCategoryId, colorId, productName, productDescription, stkXxs, stkXs, stkS, stkM, stkL, stkXl, stkXxl, img01, img02, img03, img04, price) {
+            $("#inputProductIdE").val(productId);
+            $("#inputProductIdHiddenE").val(productId);
+            $("#inputProductCategoryE").val(productCategoryId);
+            $("#inputColorE").val(colorId);
+            $("#inputProductNameE").val(productName);
+            $("#inputProductPriceE").val(price);
+            $("#inputProductDescriptionE").val(productDescription);
+            $("#inputStockSizeXxsE").val(stkXxs);
+            $("#inputStockSizeXsE").val(stkXs);
+            $("#inputStockSizeSE").val(stkS);
+            $("#inputStockSizeME").val(stkM);
+            $("#inputStockSizeLE").val(stkL);
+            $("#inputStockSizeXlE").val(stkXl);
+            $("#inputStockSizeXxlE").val(stkXxl);
+
+            var urlImage01 = 'assets/productImages/' + img01;
+            var urlImage02 = 'assets/productImages/' + img02;
+            var urlImage03 = 'assets/productImages/' + img03;
+            var urlImage04 = 'assets/productImages/' + img04;
+
+            console.log(urlImage01);
+            console.log(urlImage02);
+            console.log(urlImage03);
+            console.log(urlImage04);
+
+            $("#image01").attr("src", urlImage01);
+            $("#image02").attr("src", urlImage02);
+            $("#image03").attr("src", urlImage03);
+            $("#image04").attr("src", urlImage04);
+
+            $("#nameImage01").text(img01);
+            $("#nameImage02").text(img02);
+            $("#nameImage03").text(img03);
+            $("#nameImage04").text(img04);
+
+            $('#exampleModalCenter1').modal('handleUpdate')
         }
     </script>
 
