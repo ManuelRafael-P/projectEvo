@@ -111,6 +111,18 @@ class UserSisDao
         }
     }
 
+    public function updateUserAccountConfirmed($email)
+    {
+        try {
+            $sql = "UPDATE users SET USER_ACCOUNT_VERIFIED = 1, DT_UPDATE = CURRENT_TIMESTAMP WHERE USER_EMAIL = ?";
+            $this->pdo->prepare($sql)->execute(array(
+                $email
+            ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     //CRUD
 
     public function addRecord(UserSis $u)

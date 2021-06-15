@@ -21,13 +21,13 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <?php
-                if (isset($_SESSION['info_user'])) {
+                if (isset($_SESSION['user_info'])) {
                 ?>
                     <li id="links" class="nav-item mr-3">
-                        <a class="nav-link text-white" href="?c=usuario&a=Info_User_Client"><?php print_r($_SESSION['info_user']); ?></a>
+                        <a class="nav-link text-white" href="?c=usuario&a=Info_User_Client"><?php print_r($_SESSION['user_info']['user_full_name']); ?></a>
                     </li>
                     <li id="links" class="nav-item mr-3">
-                        <a class="nav-link text-white" name="cerrar" href="?c=sesion&a=Cerrar_Sesion">Cerrar sesion</a>
+                        <a class="nav-link text-white" name="cerrar" href="?c=security&a=logOut">Cerrar sesion</a>
                     </li>
                 <?php
                 } else {
