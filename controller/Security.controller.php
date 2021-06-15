@@ -37,7 +37,6 @@ class SecurityController
         }
         require_once 'view/components/common/header.php';
         require_once 'view/security/login.php';
-        require_once 'view/components/common/footer.php';
     }
 
     public function registryPage()
@@ -53,7 +52,6 @@ class SecurityController
         }
         require_once 'view/components/common/header.php';
         require_once 'view/security/register_form.php';
-        require_once 'view/components/common/footer.php';
     }
 
     public function registryCompletePage()
