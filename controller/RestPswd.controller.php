@@ -19,7 +19,6 @@ class RestPswdController
         require_once 'view/components/intranet/FooterIntranet.php';
     }
 
-
     public function deleteRestPswd()
     {
         if (isset($_GET['id'])) {
