@@ -620,7 +620,7 @@ img {
 
 /* Style all input fields */
 
-input {
+/* input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -628,7 +628,7 @@ input {
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 16px;
-}
+} */
 
 
 /* Style the submit button */

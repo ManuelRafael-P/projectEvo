@@ -36,6 +36,28 @@ class ProductDao
         }
     }
 
+    public function listProductsForCatalog()
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_IMAGE_1 FROM products");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getProductDetailById($id)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM products WHERE PRODUCT_ID = ?");
+            $stm->execute(array($id));
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function getLastId()
     {
         try {
@@ -56,6 +78,7 @@ class ProductDao
                 PRODUCT_CATEGORY_ID, 
                 COLOR_ID, 
                 PRODUCT_NAME, 
+                PRODUCT_DESCRIPTION,
                 STOCK_SIZE_XXS, 
                 STOCK_SIZE_XS, 
                 STOCK_SIZE_S, 
@@ -70,12 +93,13 @@ class ProductDao
                 PRODUCT_PRICE
                 ) 
                 VALUES
-                (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             $stm->execute(array(
                 $c->getProductId(),
                 $c->getProductCategoryId(),
                 $c->getColorId(),
                 $c->getProductName(),
+                $c->getProductDescription(),
                 $c->getStockSizeXxs(),
                 $c->getStockSizeXs(),
                 $c->getStockSizeS(),
@@ -116,22 +140,23 @@ class ProductDao
             DT_UPDATE = CURRENT_TIMESTAMP 
             WHERE PRODUCT_ID = ?");
             $stm->execute(array(
-                $c->getProductCategoryId(), 
-                $c->getColorId(), 
-                $c->getProductName(), 
-                $c->getStockSizeXxs(), 
-                $c->getStockSizeXs(), 
-                $c->getStockSizeS(), 
-                $c->getStockSizeM(), 
-                $c->getStockSizeL(), 
-                $c->getStockSizeXl(), 
-                $c->getStockSizeXxl(), 
-                $c->getProductImage1(), 
-                $c->getProductImage2(), 
-                $c->getProductImage3(), 
-                $c->getProductImage4(), 
-                $c->getProductPrice(), 
-                $c->getProductId()));
+                $c->getProductCategoryId(),
+                $c->getColorId(),
+                $c->getProductName(),
+                $c->getStockSizeXxs(),
+                $c->getStockSizeXs(),
+                $c->getStockSizeS(),
+                $c->getStockSizeM(),
+                $c->getStockSizeL(),
+                $c->getStockSizeXl(),
+                $c->getStockSizeXxl(),
+                $c->getProductImage1(),
+                $c->getProductImage2(),
+                $c->getProductImage3(),
+                $c->getProductImage4(),
+                $c->getProductPrice(),
+                $c->getProductId()
+            ));
         } catch (Exception $e) {
             die($e->getMessage());
         }
