@@ -9,9 +9,9 @@
                 <li id="links" class="nav-item active">
                     <a class="nav-link text-white" href="?c=main&a=Index">Home</a>
                 </li>
-                <!-- <li id="links" class="nav-item">
-                    <a class="nav-link text-white" href="?c=main&a=Listar_Productos">Productos</a>
-                </li> -->
+                <li id="links" class="nav-item">
+                    <a class="nav-link text-white" href="?c=main&a=productCatalog">Productos</a>
+                </li>
                 <li id="links" class="nav-item">
                     <a class="nav-link text-white" href="?c=main&a=AboutUs">Nosotros</a>
                 </li>
