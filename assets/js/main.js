@@ -64,6 +64,7 @@ var letter = document.getElementById("letter");
 var capital = document.getElementById("capital");
 var number = document.getElementById("number");
 var length = document.getElementById("length");
+var symbol = document.getElementById("symbol");
 
 // When the user clicks on the password field, show the message_password box
 myInput.onfocus = function() {
@@ -107,12 +108,27 @@ myInput.onkeyup = function() {
         number.classList.add("invalid");
     }
 
+    //Validate symbols
+    var symbols = /[!@#$%^&*_=+-]/g;
+    if (myInput.value.match(symbols)) {
+        symbol.classList.remove("invalid");
+        symbol.classList.add("valid");
+    } else {
+        symbol.classList.remove("valid");
+        nsymbol.classList.add("invalid");
+    }
+    
     // Validate length
-    if (myInput.value.length >= 8) {
+    if (myInput.value.length == 8) {
         length.classList.remove("invalid");
         length.classList.add("valid");
     } else {
         length.classList.remove("valid");
         length.classList.add("invalid");
     }
+
+    
+
+    
+
 }
