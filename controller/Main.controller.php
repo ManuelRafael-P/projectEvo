@@ -21,6 +21,12 @@ class mainController
 
     public function Index()
     {
+        $productCat01 = $this->productDao->listProductsForCatalogByCategoryName("Casaca");
+        $productCat02 = $this->productDao->listProductsForCatalogByCategoryName("Conjunto");
+        $productCat03 = $this->productDao->listProductsForCatalogByCategoryName("Jean");
+        $productCat04 = $this->productDao->listProductsForCatalogByCategoryName("Jogger");
+        $productCat05 = $this->productDao->listProductsForCatalogByCategoryName("Overall");
+        $productCat06 = $this->productDao->listProductsForCatalogByCategoryName("Short");
         require_once 'view/components/common/header.php';
         require_once 'view/components/common/navbar.php';
         require_once 'view/main/main_page.php';
@@ -46,12 +52,26 @@ class mainController
     public function productCatalog()
     {
         if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            if ($id != "") {
+                $producto = $this->productDao->listProductsForCatalogByCategory($id);
+            } else {
+            }
         } else {
             $producto = $this->productDao->listProductsForCatalog();
         }
         require_once 'view/components/common/header.php';
         require_once 'view/components/common/navbar.php';
         require_once 'view/main/catalogPage.php';
+        require_once 'view/components/common/footer.php';
+    }
+
+    public function listCartProducts()
+    {
+        $total = 0;
+        require_once 'view/components/common/header.php';
+        require_once 'view/components/common/navbar.php';
+        require_once 'view/main/cartDetail.php';
         require_once 'view/components/common/footer.php';
     }
 

@@ -25,6 +25,17 @@ class ProductCategoryDao
         }
     }
 
+    public function listCategoryForFilters()
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT PRODUCT_CATEGORY_ID,PRODUCT_CATEGORY_NAME FROM product_category");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function listNecessaryDataFromProductCategories()
     {
         try {
