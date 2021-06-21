@@ -6,16 +6,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li id="links" class="nav-item active">
+                <li id="links" class="nav-item active mx-4">
                     <a class="nav-link text-white" href="?c=main&a=Index">Home</a>
                 </li>
-                <li id="links" class="nav-item">
+                <li id="links" class="nav-item mx-4">
                     <a class="nav-link text-white" href="?c=main&a=productCatalog">Productos</a>
                 </li>
-                <li id="links" class="nav-item">
+                <li id="links" class="nav-item mx-4">
                     <a class="nav-link text-white" href="?c=main&a=AboutUs">Nosotros</a>
                 </li>
-                <li id="links" class="nav-item">
+                <li id="links" class="nav-item mx-4">
                     <a class="nav-link text-white" href="?c=main&a=Contact">Contacto</a>
                 </li>
             </ul>
@@ -40,15 +40,15 @@
                 ?>
 
                 <li id="links" class="nav-item">
-                    <a id="esp" class="nav-link text-white" href="?c=sesion&a=Ver_Carrito">
+                    <a id="esp" class="nav-link text-white" href="?c=main&a=listCartProducts">
                         <i class="fas fa-shopping-cart text-white">
-                            <!-- <?php
+                            <?php
                             if (isset($_SESSION['cart'])) {
                                 $count = count($_SESSION['cart']);
                                 echo "<span>$count</span>";
                             } else {
                                 echo '<span>0</span>';
-                            } ?> -->
+                            }?>
                         </i>
                     </a>
                 </li>

@@ -1,0 +1,68 @@
+<div class="content">
+    <div class="container">
+        <?php
+        if (isset($_SESSION['cart'])) {
+            if (count($_SESSION['cart']) >= 1) {        ?>
+                <table class="table text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">CODIGO</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">TALLA</th>
+                            <th scope="col">IMAGEN</th>
+                            <th scope="col">CANTIDAD</th>
+                            <th scope="col">PRECIO</th>
+                            <th scope="col">SUBTOTAL</th>
+                            <th scope="col">OPCION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($_SESSION['cart'] as $index => $product) { ?>
+                            <tr>
+                                <?php
+                                $id = $product['productId'];
+                                $image = implode($this->productDao->getImage01ById($id));
+                                ?>
+                                <th scope="row" class="align-middle"><?php echo $product['productId'] ?></th>
+                                <td class="align-middle"><?php echo $product['name'] ?></td>
+                                <td class="align-middle"><?php echo $product['size'] ?></td>
+                                <td class="align-middle"><img src="assets/productImages/<?php echo $image ?>" alt="" class="img-thumbnail" style="height:15vh"></td>
+                                <td class="align-middle"><?php echo $product['quantity'] ?></td>
+                                <td class="align-middle"><?php echo $product['price'] ?></td>
+                                <td class="align-middle"><?php echo number_format($product['price'] * $product['quantity'], 2) ?></td>
+
+                                <?php $total = $total + ($product['price'] * $product['quantity']); ?>
+                                <form action="?c=Session&a=Delete" method="post">
+                                    <input type="hidden" name="id" value="<?php echo $product['productId'] ?>">
+                                    <input type="hidden" name="pos" value="<?php echo $index ?>">
+                                    <td class="align-middle"><button type="submit" class="btn btn-danger">X</button></td>
+                                </form>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+        <?php
+            } else {
+                echo "<h2>No tiene productos en el carrito</h2>";
+            }
+        } else {
+            echo "<h2>No tiene productos en el carrito</h2>";
+        }
+        ?>
+
+        <?php
+        if (isset($_SESSION['cart'])) {
+        ?>
+            <h2>Total</h2>
+            <p><?php echo number_format($total, 2) ?></p>
+            <form action="?c=pago&a=Pagar" method="post">
+                <input type="hidden" name="total" value="<?php echo $total ?>">
+                <button type="submit" name="pagar" class="btn btn-warning">PAGAR</button>
+            </form>
+        <?php
+        } else {
+            echo "";
+        }
+        ?>
+    </div>
+</div>
