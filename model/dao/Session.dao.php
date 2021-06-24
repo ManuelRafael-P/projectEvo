@@ -2,6 +2,7 @@
 
 require_once 'model/entity/UserSession.entity.php';
 require_once 'model/entity/ProductSession.entity.php';
+require_once 'model/entity/SaleSession.entity.php';
 
 class SessionDao
 {
@@ -15,6 +16,17 @@ class SessionDao
             'user_verified' => $u->getVerifyAccountValue()
         );
         $_SESSION['user_info'] = $item_array;
+    }
+
+    public function generateSaleSession(SaleSession $s)
+    {
+        $item_array = array(
+            'sale_id' => $s->getSaleId(),
+            'transaction_key' => $s->getTransactionKey(),
+            'total_s' => $s->getTotalS(),
+            'total_d' => $s->getTotalD()
+        );
+        $_SESSION['sale_info'] = $item_array;
     }
 
     public function addToSession(ProductSession $p)
@@ -45,6 +57,5 @@ class SessionDao
     public function destroy_session()
     {
         unset($_SESSION['user_info']);
-        session_destroy();
     }
 }
