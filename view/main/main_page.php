@@ -144,7 +144,7 @@
     </div>
 
     <div class="container mt-1 mb-3">
-        <h2 class="font-weight-light">Productos mas populares</h2>
+        <h2 class="font-weight-light">Productos recien agregados</h2>
         <div class="row mx-auto my-auto text-center">
             <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
                 <div class="carousel-inner esp w-100" role="listbox">
@@ -419,10 +419,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 <script>
     $('#recipeCarousel').carousel({

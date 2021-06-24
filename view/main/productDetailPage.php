@@ -43,7 +43,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <input type="radio" id="xxs" name="size" value="xxs" checked>
+                                    <input type="radio" id="xxs" name="size" value="XXS" checked>
                                     <label for="xxs" data-toggleXXtooltip" data-placement="top" title="<?php echo ($producto[0]->STOCK_SIZE_SSS) ?>">XXS</label><br>
                                 </div>
                                 <div class="col">
@@ -57,7 +57,7 @@
                         if ($producto[0]->STOCK_SIZE_XS > 0) { ?>
                             <div class="row">
                                 <div class="col">
-                                    <input type="radio" id="xs" name="size" value="xs">
+                                    <input type="radio" id="xs" name="size" value="XS">
                                     <label for="xs">XS</label><br>
                                 </div>
                                 <div class="col">
@@ -71,7 +71,7 @@
                         if ($producto[0]->STOCK_SIZE_S > 0) { ?>
                             <div class="row">
                                 <div class="col">
-                                    <input type="radio" id="s" name="size" value="s">
+                                    <input type="radio" id="s" name="size" value="S">
                                     <label for="s">S</label><br>
                                 </div>
                                 <div class="col">
@@ -85,7 +85,7 @@
                         if ($producto[0]->STOCK_SIZE_M > 0) { ?>
                             <div class="row">
                                 <div class="col">
-                                    <input type="radio" id="m" name="size" value="m">
+                                    <input type="radio" id="m" name="size" value="M">
                                     <label for="m">M</label><br>
                                 </div>
                                 <div class="col">
@@ -99,7 +99,7 @@
                         if ($producto[0]->STOCK_SIZE_L > 0) { ?>
                             <div class="row">
                                 <div class="col">
-                                    <input type="radio" id="l" name="size" value="l">
+                                    <input type="radio" id="l" name="size" value="L">
                                     <label for="l">L</label><br>
                                 </div>
                                 <div class="col">
@@ -113,7 +113,7 @@
                         if ($producto[0]->STOCK_SIZE_XL > 0) { ?>
                             <div class="row">
                                 <div class="col">
-                                    <input type="radio" id="xl" name="size" value="xl">
+                                    <input type="radio" id="xl" name="size" value="XL">
                                     <label for="xl">XL</label><br>
                                 </div>
                                 <div class="col">
@@ -127,7 +127,7 @@
                         if ($producto[0]->STOCK_SIZE_XXL > 0) { ?>
                             <div class="row">
                                 <div class="col">
-                                    <input type="radio" id="xxl" name="size" value="xxl">
+                                    <input type="radio" id="xxl" name="size" value="XXL">
                                     <label for="xxl">XXL</label><br>
                                 </div>
                                 <div class="col">

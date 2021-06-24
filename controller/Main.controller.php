@@ -69,6 +69,15 @@ class mainController
     public function listCartProducts()
     {
         $total = 0;
+        $message = "";
+        if (isset($_GET['msg'])) {
+            if ($_GET['msg'] == "user-not-logged") {
+                $message = "Usted no ha iniciado sesion. No podra realizar compras.";
+            }
+            if ($_GET['msg'] == "user-not-confirmed") {
+                $message = "Usted no ha confirmado su cuenta. No podra realizar compras.";
+            }
+        }
         require_once 'view/components/common/header.php';
         require_once 'view/components/common/navbar.php';
         require_once 'view/main/cartDetail.php';

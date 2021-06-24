@@ -58,6 +58,43 @@ class ProductDao
         }
     }
 
+    public function showStock($id, $size)
+    {
+        try {
+            $temp = "STOCK_SIZE_" . $size;
+            $stm = $this->pdo->prepare("SELECT $temp FROM products WHERE PRODUCT_ID = ?");
+            $stm->execute(array($id));
+            return $stm->fetchAll(PDO::FETCH_COLUMN);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function updateStock($size, $id, $quantity)
+    {
+        try {
+            $temp = "STOCK_SIZE_" . $size;
+            $sql = "UPDATE products SET $temp = ? WHERE PRODUCT_ID = ?";
+            $this->pdo->prepare($sql)
+                ->execute(
+                    array($quantity, $id)
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function listProductsOfSale($id)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * from sales_detail,products where sales_detail.PRODUCT_ID = products.PRODUCT_ID AND sales_detail.SALE_ID = ?");
+            $stm->execute(array($id));
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function listProductsForCatalogByCategory($id)
     {
         try {

@@ -55,7 +55,7 @@
         ?>
             <h2>Total</h2>
             <p><?php echo number_format($total, 2) ?></p>
-            <form action="?c=pago&a=Pagar" method="post">
+            <form action="?c=payment&a=pay" method="post">
                 <input type="hidden" name="total" value="<?php echo $total ?>">
                 <button type="submit" name="pagar" class="btn btn-warning">PAGAR</button>
             </form>
@@ -66,3 +66,43 @@
         ?>
     </div>
 </div>
+
+<div class="modal" tabindex="-1" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <?php
+                if ($message != "") {
+                    echo ("<p id='message'>" . $message . "</p>");
+                }
+                ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function() {
+        var text = $('#message').text();
+        var size = text.length;
+        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+        console.log(size);
+        if (size > 0) {
+            myModal.show();
+        } else {
+            console.log("No")
+        }
+        document.getElementById("button").onclick = function() {
+            myModal.hide();
+        };
+    });
+</script>
