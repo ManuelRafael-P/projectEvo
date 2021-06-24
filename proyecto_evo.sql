@@ -235,7 +235,7 @@ CREATE TABLE `sales` (
 --
 
 CREATE TABLE `sales_detail` (
-  `SALE_DETAIL_ID` int(11) NOT NULL,
+  `SALE_DETAIL_ID` int(11) NOT NULL AUTO_INCREMENT,
   `SALE_ID` int(11) NOT NULL,
   `PRODUCT_ID` varchar(250) NOT NULL,
   `SIZE_SOLD` char(5) NOT NULL,
@@ -323,7 +323,6 @@ ALTER TABLE `sales`
 --
 ALTER TABLE `sales_detail`
   ADD PRIMARY KEY (`SALE_DETAIL_ID`),
-  ADD KEY `SALE_ID` (`SALE_ID`),
   ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
 
 --
@@ -373,6 +372,19 @@ ALTER TABLE `sales_detail`
   ADD CONSTRAINT `sales_detail_ibfk_1` FOREIGN KEY (`SALE_ID`) REFERENCES `sales` (`SALE_ID`),
   ADD CONSTRAINT `sales_detail_ibfk_2` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
 COMMIT;
+
+CREATE  PROCEDURE `addPrepaidSale_SP`(
+	IN saleId int,
+    IN userId int,
+    IN transactionKey varchar(250),
+    IN userEmail varchar(250),
+    IN total int, 
+    OUT latestSaleId int
+)
+BEGIN
+	INSERT INTO sales (SALE_ID,USER_ID,TRANSACTION_KEY,MAIL,TOTAL) VALUES (saleId,userId,transactionKey,userEmail,total);
+    SELECT MAX(SALE_ID) INTO latestSaleId FROM sales; 
+END
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
