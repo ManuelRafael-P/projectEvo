@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2021 a las 02:32:40
+-- Tiempo de generación: 30-06-2021 a las 01:17:49
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.0
 
@@ -47,7 +47,7 @@ INSERT INTO `colors` (`COLOR_ID`, `COLOR_NAME`, `DT_REGISTRY`, `DT_UPDATE`) VALU
 (6, 'Celeste', '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
 (7, 'Azul petroleo', '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
 (8, 'Azul cobalto', '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
-(9, 'ceruleo', '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
+(9, 'Ceruleo', '2021-06-14 23:55:13', '2021-06-29 16:54:43'),
 (10, 'Rojo', '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
 (11, 'Ocre', '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
 (12, 'Verde militar', '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
@@ -71,7 +71,8 @@ INSERT INTO `colors` (`COLOR_ID`, `COLOR_NAME`, `DT_REGISTRY`, `DT_UPDATE`) VALU
 (30, 'Celeste claro', '2021-06-23 18:43:20', '2021-06-23 19:06:28'),
 (31, 'Verdeceledon', '2021-06-23 18:43:34', '2021-06-23 19:06:34'),
 (32, 'Nieve blanco', '2021-06-23 18:43:46', '2021-06-23 19:06:38'),
-(33, 'Dorado', '2021-06-23 18:44:01', '2021-06-23 19:06:43');
+(33, 'Dorado', '2021-06-23 18:44:01', '2021-06-23 19:06:43'),
+(34, 'Azul cian', '2021-06-29 13:27:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`PRODUCT_ID`, `PRODUCT_CATEGORY_ID`, `COLOR_ID`, `PRODUCT_NAME`, `PRODUCT_DESCRIPTION`, `STOCK_SIZE_XXS`, `STOCK_SIZE_XS`, `STOCK_SIZE_S`, `STOCK_SIZE_M`, `STOCK_SIZE_L`, `STOCK_SIZE_XL`, `STOCK_SIZE_XXL`, `PRODUCT_IMAGE_1`, `PRODUCT_IMAGE_2`, `PRODUCT_IMAGE_3`, `PRODUCT_IMAGE_4`, `PRODUCT_PRICE`, `DT_REGISTRY`, `DT_UPDATE`) VALUES
 ('P0000001', 1, 1, 'Ariana', '¡Disponible en cuatro colores! Estilo crop bomber con capucha, estamos listas para engreirte con nuestros ultimos modelos.', 2, 2, 2, 2, 2, 2, 2, 'P0000001-1.jpg', 'P0000001-2.jpg', 'P0000001-3.jpg', 'P0000001-4.jpg', 40, '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
-('P0000002', 1, 2, 'Ariana', '¡Disponible en cuatro colores! Estilo crop bomber con capucha, estamos listas para engreirte con nuestros ultimos modelos.', 2, 2, 2, 2, 2, 2, 2, 'P0000002-1.jpg', 'P0000002-2.jpg', 'P0000002-3.jpg', 'P0000002-4.jpg', 40, '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
+('P0000002', 1, 2, 'Ariana', '¡Disponible en cuatro colores! Estilo crop bomber con capucha, estamos listas para engreirte con nuestros ultimos modelos.', 2, 2, 2, 2, 2, 2, 2, 'P0000002-1.jpg', 'P0000002-2.jpg', 'P0000002-3.jpg', 'P0000002-4.jpg', 40, '2021-06-14 23:55:13', '2021-06-29 18:14:38'),
 ('P0000003', 1, 3, 'Ariana', '¡Disponible en cuatro colores! Estilo crop bomber con capucha, estamos listas para engreirte con nuestros ultimos modelos.', 2, 2, 2, 2, 2, 2, 2, 'P0000003-1.jpg', 'P0000003-2.jpg', 'P0000003-3.jpg', 'P0000003-4.jpg', 40, '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
 ('P0000004', 1, 4, 'Ariana', '¡Disponible en cuatro colores! Estilo crop bomber con capucha, estamos listas para engreirte con nuestros ultimos modelos.', 2, 2, 2, 2, 2, 2, 2, 'P0000004-1.jpg', 'P0000004-2.jpg', 'P0000004-3.jpg', 'P0000004-4.jpg', 40, '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
 ('P0000005', 1, 5, 'Boyfriend', 'Material Sauve y stresh. ¡Disponible en cuatro colores!, combinalas como quieras.', 2, 2, 2, 2, 2, 2, 2, 'P0000005-1.jpg', 'P0000005-2.jpg', 'P0000005-3.jpg', 'P0000005-4.jpg', 45, '2021-06-14 23:55:13', '2021-06-14 23:55:13'),
@@ -250,7 +251,71 @@ INSERT INTO `products` (`PRODUCT_ID`, `PRODUCT_CATEGORY_ID`, `COLOR_ID`, `PRODUC
 ('P0000124', 4, 31, 'Mia', 'Jogger afranelado para mejor comodidad, Disponible en cuatro colores.', 2, 2, 2, 2, 2, 2, 2, 'P0000124-1.jpg', 'P0000124-2.jpg', 'P0000124-3.jpg', 'P0000124-4.jpg', 40, '2021-06-23 18:59:39', '2021-06-23 18:59:58'),
 ('P0000125', 4, 32, 'Mia', 'Jogger afranelado para mejor comodidad, Disponible en cuatro colores.', 2, 2, 2, 2, 2, 2, 2, 'P0000125-1.jpg', 'P0000125-2.jpg', 'P0000125-3.jpg', 'P0000125-4.jpg', 40, '2021-06-23 19:00:34', '2021-06-23 19:00:52'),
 ('P0000126', 4, 33, 'Mia', 'Jogger afranelado para mejor comodidad, Disponible en cuatro colores.', 2, 2, 2, 2, 2, 2, 2, 'P0000126-1.jpg', 'P0000126-2.jpg', 'P0000126-3.jpg', 'P0000126-4.jpg', 40, '2021-06-23 19:01:31', '2021-06-23 19:01:46'),
-('P0000127', 4, 19, 'Mia', 'Jogger afranelado para mejor comodidad, Disponible en cuatro colores.', 2, 2, 2, 2, 2, 2, 2, 'P0000127-1.jpg', 'P0000127-2.jpg', 'P0000127-3.jpg', 'P0000127-4.jpg', 40, '2021-06-23 19:02:23', '2021-06-23 19:02:47');
+('P0000127', 4, 19, 'Mia', 'Jogger afranelado para mejor comodidad, Disponible en cuatro colores.', 2, 2, 2, 2, 2, 2, 2, 'P0000127-1.jpg', 'P0000127-2.jpg', 'P0000127-3.jpg', 'P0000127-4.jpg', 40, '2021-06-23 19:02:23', '2021-06-23 19:02:47'),
+('P0000128', 5, 7, 'Basic', 'Overall básico en colores disponibles.', 2, 2, 2, 2, 2, 2, 2, 'P0000128-1.jpg', 'P0000128-2.jpg', 'P0000128-3.jpg', 'P0000128-4.jpg', 45, '2021-06-29 13:29:05', '2021-06-29 17:57:57'),
+('P0000129', 5, 9, 'Basic', 'Overall básico en colores disponibles.', 2, 2, 2, 2, 2, 2, 2, 'P0000129-1.jpg', 'P0000129-2.jpg', 'P0000129-3.jpg', 'P0000129-4.jpg', 45, '2021-06-29 13:30:42', '2021-06-29 17:58:13'),
+('P0000130', 5, 6, 'Basic', 'Overall básico en colores disponibles.', 2, 2, 2, 2, 2, 2, 2, 'P0000130-1.jpg', 'P0000130-2.jpg', 'P0000130-3.jpg', 'P0000130-4.jpg', 45, '2021-06-29 13:31:43', '2021-06-29 17:58:25'),
+('P0000131', 5, 28, 'Basic', 'Overall básico en colores disponibles.', 2, 2, 2, 2, 2, 2, 2, 'P0000131-1.jpg', 'P0000131-2.jpg', 'P0000131-3.jpg', 'P0000131-4.jpg', 45, '2021-06-29 13:32:46', '2021-06-29 17:59:50'),
+('P0000132', 5, 7, 'Boyfriend', 'Los más pedidos, overall boufriend con rasgado, combinalos como quieras. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000132-1.jpg', 'P0000132-2.jpg', 'P0000132-3.jpg', 'P0000132-4.jpg', 50, '2021-06-29 13:33:55', '2021-06-29 18:00:06'),
+('P0000133', 5, 9, 'Boyfriend', 'Los más pedidos, overall boufriend con rasgado, combinalos como quieras. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000133-1.jpg', 'P0000133-2.jpg', 'P0000133-3.jpg', 'P0000133-4.jpg', 50, '2021-06-29 13:34:38', '2021-06-29 18:00:59'),
+('P0000134', 5, 6, 'Boyfriend', 'Los más pedidos, overall boufriend con rasgado, combinalos como quieras. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000134-1.jpg', 'P0000134-2.jpg', 'P0000134-3.jpg', 'P0000134-4.jpg', 50, '2021-06-29 13:35:22', '2021-06-29 18:01:29'),
+('P0000135', 5, 34, 'Boyfriend', 'Los más pedidos, overall boufriend con rasgado, combinalos como quieras. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000135-1.jpg', 'P0000135-2.jpg', 'P0000135-3.jpg', 'P0000135-4.jpg', 50, '2021-06-29 13:36:03', '2021-06-29 18:02:00'),
+('P0000136', 5, 9, 'Mom', 'Mom Overall, sueltos para más comodidad.', 2, 2, 2, 2, 2, 2, 2, 'P0000136-1.jpg', 'P0000136-2.jpg', 'P0000136-3.jpg', 'P0000136-4.jpg', 50, '2021-06-29 13:38:05', '2021-06-29 18:02:14'),
+('P0000137', 5, 7, 'Mom', 'Mom Overall, sueltos para más comodidad.', 2, 2, 2, 2, 2, 2, 2, 'P0000137-1.jpg', 'P0000137-2.jpg', 'P0000137-3.jpg', 'P0000137-4.jpg', 50, '2021-06-29 13:39:00', '2021-06-29 18:03:00'),
+('P0000138', 5, 8, 'Mom', 'Mom Overall, sueltos para más comodidad.', 2, 2, 2, 2, 2, 2, 2, 'P0000138-1.jpg', 'P0000138-2.jpg', 'P0000138-3.jpg', 'P0000138-4.jpg', 50, '2021-06-29 13:40:10', '2021-06-29 18:03:09'),
+('P0000139', 5, 28, 'Mom', 'Mom Overall, sueltos para más comodidad.', 2, 2, 2, 2, 2, 2, 2, 'P0000139-1.jpg', 'P0000139-2.jpg', 'P0000139-3.jpg', 'P0000139-4.jpg', 50, '2021-06-29 13:41:06', '2021-06-29 18:03:27'),
+('P0000140', 5, 34, 'Strech', 'Overall Skinny, se ajusta al cuerpo, combinalos con tops largos y crops. Material: tela nacional.', 2, 2, 2, 2, 2, 2, 2, 'P0000140-1.jpg', 'P0000140-2.jpg', 'P0000140-3.jpg', 'P0000140-4.jpg', 45, '2021-06-29 13:43:02', '2021-06-29 18:03:38'),
+('P0000141', 5, 29, 'Strech', 'Overall Skinny, se ajusta al cuerpo, combinalos con tops largos y crops. Material: tela nacional.', 2, 2, 2, 2, 2, 2, 2, 'P0000141-1.jpg', 'P0000141-2.jpg', 'P0000141-3.jpg', 'P0000141-4.jpg', 45, '2021-06-29 13:43:55', '2021-06-29 18:04:34'),
+('P0000142', 5, 6, 'Strech', 'Overall Skinny, se ajusta al cuerpo, combinalos con tops largos y crops. Material: tela nacional.', 2, 2, 2, 2, 2, 2, 2, 'P0000142-1.jpg', 'P0000142-2.jpg', 'P0000142-3.jpg', 'P0000142-4.jpg', 45, '2021-06-29 13:44:36', '2021-06-29 18:04:41'),
+('P0000143', 5, 7, 'Strech', 'Overall Skinny, se ajusta al cuerpo, combinalos con tops largos y crops. Material: tela nacional.', 2, 2, 2, 2, 2, 2, 2, 'P0000143-1.jpg', 'P0000143-2.jpg', 'P0000143-3.jpg', 'P0000143-4.jpg', 45, '2021-06-29 13:45:15', '2021-06-29 18:04:49'),
+('P0000144', 5, 28, 'Short Overall Boyfriend', 'Con rasgados y bordado en la parte inferior del short. Colores y tallas disponibles.', 2, 2, 2, 2, 2, 2, 2, 'P0000144-1.jpg', 'P0000144-2.jpg', 'P0000144-3.jpg', 'P0000144-4.jpg', 40, '2021-06-29 13:46:10', '2021-06-29 18:05:01'),
+('P0000145', 5, 5, 'Short Overall Boyfriend', 'Con rasgados y bordado en la parte inferior del short. Colores y tallas disponibles.', 2, 2, 2, 2, 2, 2, 2, 'P0000145-1.jpg', 'P0000145-2.jpg', 'P0000145-3.jpg', 'P0000145-4.jpg', 40, '2021-06-29 13:46:57', '2021-06-29 18:05:09'),
+('P0000146', 5, 7, 'Short Overall Boyfriend', 'Con rasgados y bordado en la parte inferior del short. Colores y tallas disponibles.', 2, 2, 2, 2, 2, 2, 2, 'P0000146-1.jpg', 'P0000146-2.jpg', 'P0000146-3.jpg', 'P0000146-4.jpg', 40, '2021-06-29 13:47:33', '2021-06-29 18:05:15'),
+('P0000147', 5, 9, 'Short Overall Boyfriend', 'Con rasgados y bordado en la parte inferior del short. Colores y tallas disponibles.', 2, 2, 2, 2, 2, 2, 2, 'P0000147-1.jpg', 'P0000147-2.jpg', 'P0000147-3.jpg', 'P0000147-4.jpg', 40, '2021-06-29 13:48:15', '2021-06-29 18:05:34'),
+('P0000148', 5, 5, 'Yamper', 'Vestido jean con botones en la parte delantera.', 2, 2, 2, 2, 2, 2, 2, 'P0000148-1.jpg', 'P0000148-2.jpg', 'P0000148-3.jpg', 'P0000148-4.jpg', 40, '2021-06-29 13:49:57', '2021-06-29 18:06:10'),
+('P0000149', 5, 7, 'Yamper', 'Vestido jean con botones en la parte delantera.', 2, 2, 2, 2, 2, 2, 2, 'P0000149-1.jpg', 'P0000149-2.jpg', 'P0000149-3.jpg', 'P0000149-4.jpg', 40, '2021-06-29 13:50:34', '2021-06-29 18:06:45'),
+('P0000150', 5, 28, 'Yamper', 'Vestido jean con botones en la parte delantera.', 2, 2, 2, 2, 2, 2, 2, 'P0000150-1.jpg', 'P0000150-2.jpg', 'P0000150-3.jpg', 'P0000150-4.jpg', 40, '2021-06-29 13:51:09', '2021-06-29 18:06:51'),
+('P0000151', 6, 34, 'Falda Short', 'Short falda con corte en diagonal, en cuatro colores disponibles.\r\n', 2, 2, 2, 2, 2, 2, 2, 'P0000151-1.jpg', 'P0000151-2.jpg', 'P0000151-3.jpg', 'P0000151-4.jpg', 35, '2021-06-29 16:56:54', '2021-06-29 18:06:57'),
+('P0000152', 6, 29, 'Falda Short', 'Short falda con corte en diagonal, en cuatro colores disponibles.\r\n', 2, 2, 2, 2, 2, 2, 2, 'P0000152-1.jpg', 'P0000152-2.jpg', 'P0000152-3.jpg', 'P0000152-4.jpg', 35, '2021-06-29 16:57:44', '2021-06-29 17:20:46'),
+('P0000153', 6, 7, 'Falda Short Margarita', 'Short falda con corte en diagonal, con bordado de margaritas en la parte delantera, en cuatro colores disponibles.\r\n', 2, 2, 2, 2, 2, 2, 2, 'P0000153-1.jpg', 'P0000153-2.jpg', 'P0000153-3.jpg', 'P0000153-4.jpg', 40, '2021-06-29 16:58:43', '2021-06-29 17:19:40'),
+('P0000154', 6, 28, 'Falda Short Margarita', 'Short falda con corte en diagonal, con bordado de margaritas en la parte delantera, en cuatro colores disponibles.\r\n', 2, 2, 2, 2, 2, 2, 2, 'P0000154-1.jpg', 'P0000154-2.jpg', 'P0000154-3.jpg', 'P0000154-4.jpg', 40, '2021-06-29 16:59:32', '2021-06-29 17:20:27'),
+('P0000155', 6, 6, 'Falda Short Margarita', 'Short falda con corte en diagonal, con bordado de margaritas en la parte delantera, en cuatro colores disponibles.', 2, 2, 2, 2, 2, 2, 2, 'P0000155-1.jpg', 'P0000155-2.jpg', 'P0000155-3.jpg', 'P0000155-4.jpg', 40, '2021-06-29 17:22:42', '2021-06-29 18:08:02'),
+('P0000156', 6, 28, 'BikkerMom', 'Shorts largos en colores básicos. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000156-1.jpg', 'P0000156-2.jpg', 'P0000156-3.jpg', 'P0000156-4.jpg', 35, '2021-06-29 17:24:24', '2021-06-29 18:08:09'),
+('P0000157', 6, 5, 'BikkerMom', 'Shorts largos en colores básicos. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000157-1.jpg', 'P0000157-2.jpg', 'P0000157-3.jpg', 'P0000157-4.jpg', 35, '2021-06-29 17:25:17', '2021-06-29 18:08:26'),
+('P0000158', 6, 7, 'BikkerMom', 'Shorts largos en colores básicos. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000158-1.jpg', 'P0000158-2.jpg', 'P0000158-3.jpg', 'P0000158-4.jpg', 35, '2021-06-29 17:25:52', '2021-06-29 18:08:51'),
+('P0000159', 6, 8, 'BikkerMom', 'Shorts largos en colores básicos. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000159-1.jpg', 'P0000159-2.jpg', 'P0000159-3.jpg', 'P0000159-4.jpg', 35, '2021-06-29 17:26:28', '2021-06-29 18:08:56'),
+('P0000160', 6, 28, 'Bombon', 'Shorts jeans rasgados, sueltos y con lazo para mejor ajuste. Combinalos como quieras.', 2, 2, 2, 2, 2, 2, 2, 'P0000160-1.jpg', 'P0000160-2.jpg', 'P0000160-3.jpg', 'P0000160-4.jpg', 35, '2021-06-29 17:27:25', '2021-06-29 18:09:01'),
+('P0000161', 6, 9, 'Bombon', 'Shorts jeans rasgados, sueltos y con lazo para mejor ajuste. Combinalos como quieras.', 2, 2, 2, 2, 2, 2, 2, 'P0000161-1.jpg', 'P0000161-2.jpg', 'P0000161-3.jpg', 'P0000161-4.jpg', 35, '2021-06-29 17:28:18', '2021-06-29 18:09:43'),
+('P0000162', 6, 6, 'Bombon', 'Shorts jeans rasgados, sueltos y con lazo para mejor ajuste. Combinalos como quieras.', 2, 2, 2, 2, 2, 2, 2, 'P0000162-1.jpg', 'P0000162-2.jpg', 'P0000162-3.jpg', 'P0000162-4.jpg', 35, '2021-06-29 17:28:49', '2021-06-29 18:09:49'),
+('P0000163', 6, 28, 'Boyfriend', 'Rasgados, con bordado.', 2, 2, 2, 2, 2, 2, 2, 'P0000163-1.jpg', 'P0000163-2.jpg', 'P0000163-3.jpg', 'P0000163-4.jpg', 35, '2021-06-29 17:29:46', '2021-06-29 18:09:54'),
+('P0000164', 6, 7, 'Boyfriend', 'Rasgados, con bordado.', 2, 2, 2, 2, 2, 2, 2, 'P0000164-1.jpg', 'P0000164-2.jpg', 'P0000164-3.jpg', 'P0000164-4.jpg', 35, '2021-06-29 17:30:26', '2021-06-29 18:10:00'),
+('P0000165', 6, 9, 'Boyfriend', 'Rasgados, con bordado.', 2, 2, 2, 2, 2, 2, 2, 'P0000165-1.jpg', 'P0000165-2.jpg', 'P0000165-3.jpg', 'P0000165-4.jpg', 35, '2021-06-29 17:31:04', '2021-06-29 18:10:09'),
+('P0000166', 6, 6, 'Boyfriend', 'Rasgados, con bordado.', 2, 2, 2, 2, 2, 2, 2, 'P0000166-1.jpg', 'P0000166-2.jpg', 'P0000166-3.jpg', 'P0000166-4.jpg', 35, '2021-06-29 17:31:38', '2021-06-29 18:10:16'),
+('P0000167', 6, 6, 'Jogger BFF', 'Shorts rasgados en aspecto de joggers , sueltos en color jean claro.', 2, 2, 2, 2, 2, 2, 2, 'P0000167-1.jpg', 'P0000167-2.jpg', 'P0000167-3.jpg', 'P0000167-4.jpg', 35, '2021-06-29 17:34:30', '2021-06-29 18:10:25'),
+('P0000168', 6, 21, 'Kamill', 'Shorts licrados, en cuatro tonos, material stresh.', 2, 2, 2, 2, 2, 2, 2, 'P0000168-1.jpg', 'P0000168-2.jpg', 'P0000168-3.jpg', 'P0000168-4.jpg', 35, '2021-06-29 17:35:33', '2021-06-29 18:10:38'),
+('P0000169', 6, 13, 'Kamill', 'Shorts licrados, en cuatro tonos, material stresh.', 2, 2, 2, 2, 2, 2, 2, 'P0000169-1.jpg', 'P0000169-2.jpg', 'P0000169-3.jpg', 'P0000169-4.jpg', 35, '2021-06-29 17:36:27', '2021-06-29 18:10:44'),
+('P0000170', 6, 3, 'Kamill', 'Shorts licrados, en cuatro tonos, material stresh.', 2, 2, 2, 2, 2, 2, 2, 'P0000170-1.jpg', 'P0000170-2.jpg', 'P0000170-3.jpg', 'P0000170-4.jpg', 35, '2021-06-29 17:37:11', '2021-06-29 18:10:49'),
+('P0000171', 6, 1, 'Kamill', 'Shorts licrados, en cuatro tonos, material stresh.', 2, 2, 2, 2, 2, 2, 2, 'P0000171-1.jpg', 'P0000171-2.jpg', 'P0000171-3.jpg', 'P0000171-4.jpg', 35, '2021-06-29 17:37:46', '2021-06-29 18:11:23'),
+('P0000172', 6, 21, 'Kimmi', 'Shorts con fajeros, en cuatro colores disponibles. Combinalos con crop tops. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000172-1.jpg', 'P0000172-2.jpg', 'P0000172-3.jpg', 'P0000172-4.jpg', 35, '2021-06-29 17:39:05', '2021-06-29 18:11:29'),
+('P0000173', 6, 13, 'Kimmi', 'Shorts con fajeros, en cuatro colores disponibles. Combinalos con crop tops. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000173-1.jpg', 'P0000173-2.jpg', 'P0000173-3.jpg', 'P0000173-4.jpg', 35, '2021-06-29 17:41:15', '2021-06-29 18:11:35'),
+('P0000174', 6, 2, 'Kimmi', 'Shorts con fajeros, en cuatro colores disponibles. Combinalos con crop tops. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000174-1.jpg', 'P0000174-2.jpg', 'P0000174-3.jpg', 'P0000174-4.jpg', 35, '2021-06-29 17:41:52', '2021-06-29 18:11:50'),
+('P0000175', 6, 9, 'Kristell', 'De los más pedidos, Modelo Kristell cuenta con botones en la parte lateral. En cuatro tonos diferentes.', 2, 2, 2, 2, 2, 2, 2, 'P0000175-1.jpg', 'P0000175-2.jpg', 'P0000175-3.jpg', 'P0000175-4.jpg', 35, '2021-06-29 17:42:43', '2021-06-29 18:11:56'),
+('P0000176', 6, 7, 'Kristell', 'De los más pedidos, Modelo Kristell cuenta con botones en la parte lateral. En cuatro tonos diferentes.', 2, 2, 2, 2, 2, 2, 2, 'P0000176-1.jpg', 'P0000176-2.jpg', 'P0000176-3.jpg', 'P0000176-4.jpg', 35, '2021-06-29 17:43:15', '2021-06-29 18:12:03'),
+('P0000177', 6, 6, 'Kristell', 'De los más pedidos, Modelo Kristell cuenta con botones en la parte lateral. En cuatro tonos diferentes.', 3, 3, 3, 3, 3, 3, 3, 'P0000177-1.jpg', 'P0000177-2.jpg', 'P0000177-3.jpg', 'P0000177-4.jpg', 35, '2021-06-29 17:44:16', '2021-06-29 18:12:14'),
+('P0000178', 6, 17, 'Margarita', 'Jeans con bordado de margaritas en la parte delantera, en cuatro colores disponibles. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000178-1.jpg', 'P0000178-2.jpg', 'P0000178-3.jpg', 'P0000178-4.jpg', 35, '2021-06-29 17:45:18', '2021-06-29 18:12:19'),
+('P0000179', 6, 6, 'Margarita', 'Jeans con bordado de margaritas en la parte delantera, en cuatro colores disponibles. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000179-1.jpg', 'P0000179-2.jpg', 'P0000179-3.jpg', 'P0000179-4.jpg', 35, '2021-06-29 17:45:55', '2021-06-29 18:12:24'),
+('P0000180', 6, 9, 'Margarita', 'Jeans con bordado de margaritas en la parte delantera, en cuatro colores disponibles. Material rígido.', 2, 2, 2, 2, 2, 2, 2, 'P0000180-1.jpg', 'P0000180-2.jpg', 'P0000180-3.jpg', 'P0000180-4.jpg', 35, '2021-06-29 17:46:27', '2021-06-29 18:12:30'),
+('P0000181', 6, 7, 'Skinny', 'Short jean fajeros, con bordado en la parte inferior.', 2, 2, 2, 2, 2, 2, 2, 'P0000181-1.jpg', 'P0000181-2.jpg', 'P0000181-3.jpg', 'P0000181-4.jpg', 35, '2021-06-29 17:47:21', '2021-06-29 18:14:34'),
+('P0000182', 6, 9, 'Skinny', 'Short jean fajeros, con bordado en la parte inferior.', 2, 2, 2, 2, 2, 2, 2, 'P0000182-1.jpg', 'P0000182-2.jpg', 'P0000182-3.jpg', 'P0000182-4.jpg', 35, '2021-06-29 17:48:09', '2021-06-29 18:14:44'),
+('P0000183', 6, 5, 'Skinny', 'Short jean fajeros, con bordado en la parte inferior.', 2, 2, 2, 2, 2, 2, 2, 'P0000183-1.jpg', 'P0000183-2.jpg', 'P0000183-3.jpg', 'P0000183-4.jpg', 35, '2021-06-29 17:48:38', '2021-06-29 18:14:49'),
+('P0000184', 6, 8, 'Slouchy', 'Jeans Slouchy en shorts!, en cuatro colores disponibles. ', 2, 2, 2, 2, 2, 2, 2, 'P0000184-1.jpg', 'P0000184-2.jpg', 'P0000184-3.jpg', 'P0000184-4.jpg', 35, '2021-06-29 17:49:52', '2021-06-29 18:14:54'),
+('P0000185', 6, 29, 'Slouchy', 'Jeans Slouchy en shorts!, en cuatro colores disponibles. ', 2, 2, 2, 2, 2, 2, 2, 'P0000185-1.jpg', 'P0000185-2.jpg', 'P0000185-3.jpg', 'P0000185-4.jpg', 35, '2021-06-29 17:50:52', '2021-06-29 18:15:00'),
+('P0000186', 6, 7, 'Slouchy', 'Jeans Slouchy en shorts!, en cuatro colores disponibles. ', 2, 2, 2, 2, 2, 2, 2, 'P0000186-1.jpg', 'P0000186-2.jpg', 'P0000186-3.jpg', 'P0000186-4.jpg', 35, '2021-06-29 17:51:28', '2021-06-29 18:15:06'),
+('P0000187', 6, 28, 'Slouchy', 'Jeans Slouchy en shorts!, en cuatro colores disponibles. ', 2, 2, 2, 2, 2, 2, 2, 'P0000187-1.jpg', 'P0000187-2.jpg', 'P0000187-3.jpg', 'P0000187-4.jpg', 35, '2021-06-29 17:52:06', '2021-06-29 18:15:12'),
+('P0000188', 6, 7, 'Toreros', 'Toreros semi fajero con rasgado.', 2, 2, 2, 2, 2, 2, 2, 'P0000188-1.jpg', 'P0000188-2.jpg', 'P0000188-3.jpg', 'P0000188-4.jpg', 35, '2021-06-29 17:53:08', '2021-06-29 17:59:17'),
+('P0000189', 6, 2, 'Toreros', 'Toreros semi fajero con rasgado.', 2, 2, 2, 2, 2, 2, 2, 'P0000189-1.jpg', 'P0000189-2.jpg', 'P0000189-3.jpg', 'P0000189-4.jpg', 35, '2021-06-29 17:53:50', '2021-06-29 17:59:10'),
+('P0000190', 6, 28, 'Toreros', 'Toreros semi fajero con rasgado.', 2, 2, 2, 2, 2, 2, 2, 'P0000190-1.jpg', 'P0000190-2.jpg', 'P0000190-3.jpg', 'P0000190-4.jpg', 35, '2021-06-29 17:55:28', '2021-06-29 17:59:03'),
+('P0000191', 6, 17, 'Toreros', 'Toreros semi fajero con rasgado.', 2, 2, 2, 2, 2, 2, 2, 'P0000191-1.jpg', 'P0000191-2.jpg', 'P0000191-3.jpg', 'P0000191-4.jpg', 35, '2021-06-29 17:56:53', '2021-06-29 17:58:55');
 
 -- --------------------------------------------------------
 
@@ -323,10 +388,10 @@ CREATE TABLE `sales` (
 --
 
 CREATE TABLE `sales_detail` (
-  `SALE_DETAIL_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SALE_DETAIL_ID` int(11) NOT NULL,
   `SALE_ID` int(11) NOT NULL,
   `PRODUCT_ID` varchar(250) NOT NULL,
-  `SIZE_SOLD` char(5) NOT NULL,
+  `SIZE_SOLD` char(1) NOT NULL,
   `QUANTITY_SOLD` int(11) NOT NULL,
   `UNIT_PRICE` int(11) NOT NULL,
   `SALE_DETAIL_TOTAL` int(11) NOT NULL,
@@ -411,6 +476,7 @@ ALTER TABLE `sales`
 --
 ALTER TABLE `sales_detail`
   ADD PRIMARY KEY (`SALE_DETAIL_ID`),
+  ADD KEY `SALE_ID` (`SALE_ID`),
   ADD KEY `PRODUCT_ID` (`PRODUCT_ID`);
 
 --
@@ -460,19 +526,6 @@ ALTER TABLE `sales_detail`
   ADD CONSTRAINT `sales_detail_ibfk_1` FOREIGN KEY (`SALE_ID`) REFERENCES `sales` (`SALE_ID`),
   ADD CONSTRAINT `sales_detail_ibfk_2` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `products` (`PRODUCT_ID`);
 COMMIT;
-
-CREATE  PROCEDURE `addPrepaidSale_SP`(
-	IN saleId int,
-    IN userId int,
-    IN transactionKey varchar(250),
-    IN userEmail varchar(250),
-    IN total int, 
-    OUT latestSaleId int
-)
-BEGIN
-	INSERT INTO sales (SALE_ID,USER_ID,TRANSACTION_KEY,MAIL,TOTAL) VALUES (saleId,userId,transactionKey,userEmail,total);
-    SELECT MAX(SALE_ID) INTO latestSaleId FROM sales; 
-END
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
