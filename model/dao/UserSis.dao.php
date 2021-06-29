@@ -96,7 +96,7 @@ class UserSisDao
     public function addUser(UserSis $u)
     {
         try {
-            $sql = "INSERT INTO users (USER_ID,USER_NAMES,USER_SURNAMES,USER_EMAIL,USER_PASSWORD,USER_ADDRESS,USER_PHONE) VALUES(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO users (USER_ID,USER_NAMES,USER_SURNAMES,USER_EMAIL,USER_PASSWORD,USER_ADDRESS,USER_PHONE,USER_TYPE,USER_ACCOUNT_VERIFIED) VALUES(?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($sql)->execute(array(
                 $u->getUserId(),
                 $u->getNames(),
@@ -104,7 +104,21 @@ class UserSisDao
                 $u->getEmail(),
                 md5($u->getPassword()),
                 $u->getAddress(),
-                $u->getPhone()
+                $u->getPhone(),
+                0,
+                0
+            ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function updateUserAccountConfirmed($email)
+    {
+        try {
+            $sql = "UPDATE users SET USER_ACCOUNT_VERIFIED = 1, DT_UPDATE = CURRENT_TIMESTAMP WHERE USER_EMAIL = ?";
+            $this->pdo->prepare($sql)->execute(array(
+                $email
             ));
         } catch (Exception $e) {
             die($e->getMessage());

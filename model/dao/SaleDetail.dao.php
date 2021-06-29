@@ -36,6 +36,23 @@ class SaleDetailDao
         }
     }
 
+    public function addSaleDetail($saleId, $productId, $size, $quantity, $price, $subTotal)
+    {
+        try {
+            $stm = $this->pdo->prepare("INSERT INTO sales_detail (
+                SALE_ID, 
+                PRODUCT_ID, 
+                SIZE_SOLD, 
+                QUANTITY_SOLD, 
+                UNIT_PRICE, 
+                SALE_DETAIL_TOTAL
+                ) VALUES(?,?,?,?,?,?)");
+            $stm->execute(array($saleId, $productId, $size, $quantity, $price, $subTotal));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function addRecord(SaleDetail $c)
     {
         try {

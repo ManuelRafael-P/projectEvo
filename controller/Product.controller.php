@@ -18,6 +18,7 @@ class ProductController
         $this->colorDao = new ColorDao();
         $this->productCategoryDao = new ProductCategoryDao();
     }
+
     public function adminProduct()
     {
         require_once 'view/components/intranet/MetaIntranet.php';
@@ -128,16 +129,16 @@ class ProductController
                 $imgSize4 = $_FILES['inputProductImage4']['size'];
 
                 if (!empty($imgFile1)) {
-                    $productImage01 = $this->productDao->uploadProductFile('', $imgFile1, $tempDir1, $imgSize1, $object->getProductId(), 01);
+                    $productImage01 = $this->productDao->uploadProductFile($imgFile1, $tempDir1, $imgSize1, $object->getProductId(), 01);
                 }
                 if (!empty($imgFile2)) {
-                    $productImage02 = $this->productDao->uploadProductFile('', $imgFile2, $tempDir2, $imgSize2, $object->getProductId(), 02);
+                    $productImage02 = $this->productDao->uploadProductFile($imgFile2, $tempDir2, $imgSize2, $object->getProductId(), 02);
                 }
                 if (!empty($imgFile3)) {
-                    $productImage03 = $this->productDao->uploadProductFile('', $imgFile3, $tempDir3, $imgSize3, $object->getProductId(), 03);
+                    $productImage03 = $this->productDao->uploadProductFile($imgFile3, $tempDir3, $imgSize3, $object->getProductId(), 03);
                 }
                 if (!empty($imgFile4)) {
-                    $productImage04 = $this->productDao->uploadProductFile('', $imgFile4, $tempDir4, $imgSize4, $object->getProductId(), 04);
+                    $productImage04 = $this->productDao->uploadProductFile($imgFile4, $tempDir4, $imgSize4, $object->getProductId(), 04);
                 }
 
                 $object->setProductImage1($productImage01);

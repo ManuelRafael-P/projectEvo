@@ -6,28 +6,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li id="links" class="nav-item active">
+                <li id="links" class="nav-item active mx-4">
                     <a class="nav-link text-white" href="?c=main&a=Index">Home</a>
                 </li>
-                <!-- <li id="links" class="nav-item">
-                    <a class="nav-link text-white" href="?c=main&a=Listar_Productos">Productos</a>
-                </li> -->
-                <li id="links" class="nav-item">
+                <li id="links" class="nav-item mx-4">
+                    <a class="nav-link text-white" href="?c=main&a=productCatalog">Productos</a>
+                </li>
+                <li id="links" class="nav-item mx-4">
                     <a class="nav-link text-white" href="?c=main&a=AboutUs">Nosotros</a>
                 </li>
-                <li id="links" class="nav-item">
+                <li id="links" class="nav-item mx-4">
                     <a class="nav-link text-white" href="?c=main&a=Contact">Contacto</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <?php
-                if (isset($_SESSION['info_user'])) {
+                if (isset($_SESSION['user_info'])) {
                 ?>
                     <li id="links" class="nav-item mr-3">
-                        <a class="nav-link text-white" href="?c=usuario&a=Info_User_Client"><?php print_r($_SESSION['info_user']); ?></a>
+                        <a class="nav-link text-white" href="?c=usuario&a=Info_User_Client"><?php print_r($_SESSION['user_info']['user_full_name']); ?></a>
                     </li>
                     <li id="links" class="nav-item mr-3">
-                        <a class="nav-link text-white" name="cerrar" href="?c=sesion&a=Cerrar_Sesion">Cerrar sesion</a>
+                        <a class="nav-link text-white" name="cerrar" href="?c=security&a=logOut">Cerrar sesion</a>
                     </li>
                 <?php
                 } else {
@@ -40,15 +40,15 @@
                 ?>
 
                 <li id="links" class="nav-item">
-                    <a id="esp" class="nav-link text-white" href="?c=sesion&a=Ver_Carrito">
+                    <a id="esp" class="nav-link text-white" href="?c=main&a=listCartProducts">
                         <i class="fas fa-shopping-cart text-white">
-                            <!-- <?php
+                            <?php
                             if (isset($_SESSION['cart'])) {
                                 $count = count($_SESSION['cart']);
                                 echo "<span>$count</span>";
                             } else {
                                 echo '<span>0</span>';
-                            } ?> -->
+                            }?>
                         </i>
                     </a>
                 </li>

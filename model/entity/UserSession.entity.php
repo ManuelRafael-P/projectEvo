@@ -11,10 +11,10 @@ class UserSession
     {
         $this->id = $id;
         $this->fullname = $fullname;
-        $this->emai = $email;
+        $this->email = $email;
         $this->type = $type;
         $this->verifyAccountValue = $verifyAccountValue;
-    }
+    }   
 
     public function setId($id)
     {
