@@ -13,6 +13,9 @@
         </div>
         <div id="paypal-button-container"></div>
     </div>
+    <?php 
+    $temp = $transactionKey . '#' . $saleId; 
+    ?>
 </div>
 
 <script>
@@ -44,7 +47,7 @@
                             currency: 'USD'
                         },
                         description: "Compra de productos a Warning : $<?php echo $priceInDollar; ?>",
-                        custom: "<?php echo $transactionKey ?>#<?php echo $saleId; ?>"
+                        custom: "<?php echo $temp; ?>"
                     }]
                 }
             });

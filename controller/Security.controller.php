@@ -120,7 +120,6 @@ class SecurityController
                 if (!empty($record)) {
                     $validation = $this->validateSelector($validator, $record[0]->REST_TOKEN);
                     if ($validation) {
-                        print_r($validation);
                         $this->userSisDao->updatePasswordByEmail($record[0]->REST_EMAIL, $password);
                         $this->restPswdDao->deleteRecord($record[0]->REST_EMAIL);
                     } else {
@@ -158,6 +157,22 @@ class SecurityController
         }
     }
 
+    public function sendAccountConfirmationRequest()
+    {
+        if (isset($_SESSION['user_info'])) {
+            $email = $_SESSION['user_info']['user_email'];
+            $names = $_SESSION['user_info']['user_full_name'];
+            if ($email != "" && $names != "") {
+                $r = $this->fillRestPswd($email);
+                $url = $this->generateUrl($r->getRestSelector(), $r->getRestToken(), "verifyAccount");
+                $e = new Email($names, $email, $url);
+                $this->restPswdDao->deleteRecord($r->getRestEmail());
+                $this->restPswdDao->addRecord($r);
+                $this->emailDao->sendEmailToConfirmAccount($e);
+                header("Location:?c=security&a=logOut");
+            }
+        }
+    }
     public function accountConfirmed()
     {
         require_once 'view/components/common/header.php';
@@ -244,8 +259,6 @@ class SecurityController
             echo ("error 1");
         }
     }
-
-    //lo del profe
 
     public function fillUser($o)
     {

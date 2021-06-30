@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 <?php
-                foreach ($this->productDao->listProductsOfSale($_REQUEST['saleId']) as $producto) {
+                foreach ($this->productDao->listProductsOfSale($saleId) as $producto) {
                 ?>
                     <tr>
                         <td><?php echo $producto->PRODUCT_ID ?></td>
@@ -36,7 +36,8 @@
             </tbody>
         </table>
         <div class="text-center">
-            <a class="btn btn-primary btn-lg" href="?c=producto&a=Index" style="padding: .5em 4em">Seguir comprando</a>
+            <a class="btn btn-primary btn-lg" href="?c=payment&a=generateInvoice&uid=<?php echo $userId ?>&sid=<?php echo $saleId ?>&oid=<?php echo $orderId ?>" style="padding: .5em 4em">Generar comprobante</a>
+            <a class="btn btn-primary btn-lg" href="?c=main&a=Index" style="padding: .5em 4em">Seguir comprando</a>
         </div>
     </div>
 </div>

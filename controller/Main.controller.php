@@ -4,19 +4,31 @@ require_once 'model/entity/Product.entity.php';
 require_once 'model/dao/Product.dao.php';
 require_once 'model/dao/Color.dao.php';
 require_once 'model/dao/ProductCategory.dao.php';
+require_once 'model/dao/UserSis.dao.php';
+require_once 'model/dao/Sale.dao.php';
+require_once 'model/dao/SaleDetail.dao.php';
+require_once 'model/dao/OrderDetail.dao.php';
 
 class mainController
 {
 
     private $productDao;
+    private $userDao;
     private $colorDao;
     private $productCategoryDao;
+    private $orderDetailDao;
+    private $saleDao;
+    private $saleDetailDao;
 
     public function __construct()
     {
         $this->productDao = new ProductDao();
         $this->colorDao = new ColorDao();
         $this->productCategoryDao = new ProductCategoryDao();
+        $this->userDao = new UserSisDao();
+        $this->orderDetailDao = new OrderDetailDao();
+        $this->saleDao = new SaleDao();
+        $this->saleDetailDao = new SaleDetailDao();
     }
 
     public function Index()
@@ -95,8 +107,49 @@ class mainController
                 require_once  "view/main/productDetailPage.php";
                 require_once 'view/components/common/footer.php';
             } else {
+                echo ("<script>window.location.replace('?c=main&a=myOrderHistory')</script>");
+            }
+        }
+    }
+
+    public function orderDetail()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $order = $this->orderDetailDao->getOrderDetailById($id);
+            $sale = $this->saleDao->listSaleById($order['0']['SALE_ID']);
+            $saleDetail = $this->productDao->listProductsOfSale($order['0']['SALE_ID']);
+            if (!empty($order)) {
+                $userId = $_SESSION['user_info']['user_id'];
+                $saleId = $sale['0']['SALE_ID'];
+                $orderId = $order['0']['ORDER_DETAIL_ID'];
+                require_once 'view/components/common/header.php';
+                require_once 'view/components/common/navbar.php';
+                require_once  "view/main/orderDetailPage.php";
+                require_once 'view/components/common/footer.php';
+            } else {
                 echo ("<script>window.location.replace('?c=main&a=productCatalog')</script>");
             }
         }
+    }
+
+    public function updateUserClient()
+    {
+        if (isset($_SESSION['user_info'])) {
+            $userId = $_SESSION['user_info']['user_id'];
+            $u = $this->userDao->listUserById($userId);
+        }
+        require_once 'view/components/common/header.php';
+        require_once 'view/components/common/navbar.php';
+        require_once 'view/main/updateUserInformationPage.php';
+        require_once 'view/components/common/footer.php';
+    }
+
+    public function myOrderHistory()
+    {
+        require_once 'view/components/common/header.php';
+        require_once 'view/components/common/navbar.php';
+        require_once 'view/main/orderHistoryPage.php';
+        require_once 'view/components/common/footer.php';
     }
 }

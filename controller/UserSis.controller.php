@@ -4,7 +4,7 @@ require_once 'model/dao/UserSis.dao.php';
 
 class UserSisController
 {
-    private $UserSisDao;
+    private $userSisDao;
 
     public function __construct()
     {
@@ -18,6 +18,39 @@ class UserSisController
         require_once 'view/components/intranet/SidebarIntranet.php';
         require_once 'view/intranet/adminUserSisPage.php';
         require_once 'view/components/intranet/FooterIntranet.php';
+    }
+
+    public function updateUserClient()
+    {
+        if (isset($_POST['names']) && isset($_POST['surnames']) && isset($_POST['email']) && isset($_POST['email']) && isset($_POST['phone']) && isset($_POST['address'])) {
+            if (isset($_SESSION['user_info'])) {
+                $u = new UserSis($_SESSION['user_info']['user_id'], $_POST['names'], $_POST['surnames'], $_POST['email'], '', $_POST['address'], $_POST['phone'], '', '', '', '');
+                $this->userSisDao->updateUserClient($u);
+                echo ("<script>window.location.replace('?c=main&a=updateUserClient&msg=update-succesful')</script>");
+            }
+        }
+    }
+
+    public function updateUserClientPassword()
+    {
+        if (isset($_POST['currentPassword']) && isset($_POST['newPassword']) && isset($_POST['repeatNewPassword'])) {
+            $userId = $_SESSION['user_info']['user_id'];
+            $cp = md5($_POST['currentPassword']);
+            if (implode($this->userSisDao->validatePasswordById($userId, $cp)) == 1) {
+                $np = md5($_POST['newPassword']);
+                $rnp = md5($_POST['repeatNewPassword']);
+                if ($np == $rnp) {
+                    $this->userSisDao->updatePasswordById($userId, $np);
+                    echo ("<script>window.location.replace('?c=main&a=updateUserClient&msg=update-password-succesful')</script>");
+                } else {
+                    echo ("<script>window.location.replace('?c=main&a=updateUserClient&msg=password-not-match')</script>");
+                }
+            } else {
+                echo ("<script>window.location.replace('?c=main&a=updateUserClient&msg=wrong-password')</script>");
+            }
+        } else {
+            echo ("<script>window.location.replace('?c=main&a=updateUserClient&msg=missing-inputs')</script>");
+        }
     }
 
     public function addOrUpdateUser()

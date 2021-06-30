@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     var title = document.getElementsByTagName("title")[0].innerHTML;
     var tableSystem = document.getElementById("tableSystem");
 
@@ -67,17 +67,17 @@ var length = document.getElementById("length");
 var symbol = document.getElementById("symbol");
 
 // When the user clicks on the password field, show the message_password box
-myInput.onfocus = function() {
+myInput.onfocus = function () {
     document.getElementById("message_password").style.display = "block";
 }
 
 // When the user clicks outside of the password field, hide the  box
-myInput.onblur = function() {
+myInput.onblur = function () {
     document.getElementById("message_password").style.display = "none";
 }
 
 // When the user starts to type something inside the password field
-myInput.onkeyup = function() {
+myInput.onkeyup = function () {
     // Validate lowercase letters
     var lowerCaseLetters = /[a-z]/g;
     if (myInput.value.match(lowerCaseLetters)) {
@@ -117,7 +117,7 @@ myInput.onkeyup = function() {
         symbol.classList.remove("valid");
         nsymbol.classList.add("invalid");
     }
-    
+
     // Validate length
     if (myInput.value.length == 8) {
         length.classList.remove("invalid");
@@ -126,9 +126,5 @@ myInput.onkeyup = function() {
         length.classList.remove("valid");
         length.classList.add("invalid");
     }
-
-    
-
-    
-
 }
+

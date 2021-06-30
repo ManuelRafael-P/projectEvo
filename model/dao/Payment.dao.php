@@ -3,7 +3,7 @@ class PaymentDao
 {
     function generateCode($strength)
     {
-        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
+        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@$%^&*()';
         $input_length = strlen($permitted_chars);
         $random_string = '';
         for ($i = 0; $i < $strength; $i++) {
