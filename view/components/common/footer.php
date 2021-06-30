@@ -109,4 +109,6 @@
 <!-- Footer -->
 </body>
 
+<script src="assets/js/validations.js"></script>
+
 </html>

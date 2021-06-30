@@ -6,16 +6,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li id="links" class="nav-item active mx-4">
+                <li id="links" class="nav-item active mx-2">
                     <a class="nav-link text-white" href="?c=main&a=Index">Home</a>
                 </li>
-                <li id="links" class="nav-item mx-4">
+                <li id="links" class="nav-item mx-2">
                     <a class="nav-link text-white" href="?c=main&a=productCatalog">Productos</a>
                 </li>
-                <li id="links" class="nav-item mx-4">
+                <li id="links" class="nav-item mx-2">
                     <a class="nav-link text-white" href="?c=main&a=AboutUs">Nosotros</a>
                 </li>
-                <li id="links" class="nav-item mx-4">
+                <li id="links" class="nav-item mx-2">
                     <a class="nav-link text-white" href="?c=main&a=Contact">Contacto</a>
                 </li>
             </ul>
@@ -24,7 +24,10 @@
                 if (isset($_SESSION['user_info'])) {
                 ?>
                     <li id="links" class="nav-item mr-3">
-                        <a class="nav-link text-white" href="?c=usuario&a=Info_User_Client"><?php print_r($_SESSION['user_info']['user_full_name']); ?></a>
+                        <a class="nav-link text-white" href="?c=main&a=myOrderHistory">Mis pedidos</a>
+                    </li>
+                    <li id="links" class="nav-item mr-3">
+                        <a class="nav-link text-white" href="?c=main&a=updateUserClient"><?php print_r($_SESSION['user_info']['user_full_name']); ?></a>
                     </li>
                     <li id="links" class="nav-item mr-3">
                         <a class="nav-link text-white" name="cerrar" href="?c=security&a=logOut">Cerrar sesion</a>
@@ -48,7 +51,7 @@
                                 echo "<span>$count</span>";
                             } else {
                                 echo '<span>0</span>';
-                            }?>
+                            } ?>
                         </i>
                     </a>
                 </li>
