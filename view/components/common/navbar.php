@@ -1,25 +1,33 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top" style="padding:1em 0;">
-    <div class="container">
-        <span class="navbar-brand text-white" href="#">Mouri</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="" style="color:white"><i class="fas fa-bars"></i></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li id="links" class="nav-item active">
-                    <a class="nav-link text-white" href="?c=main&a=Index">Home</a>
-                </li>
-                <!-- <li id="links" class="nav-item">
-                    <a class="nav-link text-white" href="?c=main&a=Listar_Productos">Productos</a>
-                </li> -->
-                <li id="links" class="nav-item">
-                    <a class="nav-link text-white" href="?c=main&a=AboutUs">Nosotros</a>
-                </li>
-                <li id="links" class="nav-item">
-                    <a class="nav-link text-white" href="?c=main&a=Contact">Contacto</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
+<section class="colored-section" id="title">
+<div id ="title_div" class="container-fluid-navbar">
+    <!-- Nav Bar -->
+
+    <nav id="navbar" class="navbar navbar-expand-lg bg-transparent text-white">
+
+    <a id="monnijeans-brand" class="navbar-brand " href="">Monnijeans</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+  <ul class="navbar-nav ml-auto">
+
+  <li id="links" class="nav-item active mx-4  navitm">
+        <a class="nav-link text-white" href="?c=main&a=Index">Inicio</a>
+     </li>
+    <li id="links" class="nav-item mx-4  navitm">
+        <a class="nav-link text-white" href="?c=main&a=productCatalog">Productos</a>
+    </li>
+    <li id="links" class="nav-item mx-4  navitm">
+        <a class="nav-link text-white" href="?c=main&a=AboutUs">Nosotros</a>
+    </li>
+    <li id="links" class="nav-item mx-4  navitm">
+        <a class="nav-link text-white" href="?c=main&a=Contact">Contacto</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
                 <?php
                 if (isset($_SESSION['user_info'])) {
                 ?>
@@ -40,19 +48,24 @@
                 ?>
 
                 <li id="links" class="nav-item">
-                    <a id="esp" class="nav-link text-white" href="?c=sesion&a=Ver_Carrito">
+                    <a id="esp" class="nav-link text-white" href="?c=main&a=listCartProducts">
                         <i class="fas fa-shopping-cart text-white">
-                            <!-- <?php
+                            <?php
                             if (isset($_SESSION['cart'])) {
                                 $count = count($_SESSION['cart']);
                                 echo "<span>$count</span>";
                             } else {
                                 echo '<span>0</span>';
-                            } ?> -->
+                            }?>
                         </i>
                     </a>
                 </li>
             </ul>
-        </div>
+
     </div>
-</nav>
+    </nav>
+
+
+
+
+

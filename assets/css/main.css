@@ -67,6 +67,7 @@ li {
 body {
     font-family: 'Raleway', sans-serif!important;
     overflow-x: hidden;
+    text-align:center;
 }
 
 img {
@@ -546,7 +547,7 @@ img {
 
 .cabecera-nosotros {
     margin: 4em 0;
-    background-image: url("../images/fondo.jpg");
+    background-image: url("../images/us_image.gif");
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -596,7 +597,7 @@ img {
     font-size: 18px;
 }
 
-@media all and (min-width: 992px) {
+@media all and (min-width: 990px) {
     .navbar .nav-item .dropdown-menu {
         display: none;
     }
@@ -619,17 +620,170 @@ img {
 
 
 /* Style all input fields */
-
-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat-Bold";
+}
+.h2title{
+    font-size: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
+
+
+/* Headings */
+
+.big-heading {
+    font-family: "Montserrat-Black";
+    font-size: 4rem;
+    line-height: 1.5;
+  }
+
+  /*Containers*/
+  .container-fluid-navbar{
+    padding: 7% 15%;
+   
+  }
+
+  /* Sections */
+
+.colored-section {
+    background-color: #ff4c68;
+    color: #fff;
+  }
+
+  .white-section {
+    background-color: #fff;
+  }
+
+  /* Navigation Bar */
+
+.navbar {
+  padding: 0 0 4.5rem;
+  
+}
+#monnijeans-brand{
+    font-size: 3.5rem;
+}
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Montserrat-Light";
+}
+.navitm{
+    margin: 0px 10px;
+    padding-right: 0%;
+    padding-left: 0%;
+}
+
+
+/* Title Section */
+
+#title {
+    background-color: #ff4c68;
+    color: #fff;
+    text-align: left;
+  }
+#text_tittle{
+    margin-top: 5rem;
+}
+  
+  #title .container-fluid {
+    padding: 3% 15% 7%;
+  }
+
+  #title_div{
+padding-bottom: 17.5rem;
+padding-top: 4rem;
+  }
+
+  .section-heading {
+    font-size: 4rem;
+    line-height: 1.5;
+  }
+  
+  #monnijeans-brand{
+
+    color: white;
+  }
+
+
+  /* Title Image */
+  
+  .title-image {
+    
+    
+    position: absolute;
+    right: 30%;
+    width: 60%;
+    
+  }
+/* Buttons */
+
+
+
+  #paypal_icon{
+    
+    width: 80%;
+  }
+
+  #title_button{
+      padding:0%;
+      width:50%;
+      margin-top: 3rem;
+  }
+
+  /* Features Section */
+
+#features {
+    
+    position: relative;
+  }
+  #features_div{
+      margin-top: 0;
+  }
+  
+ 
+
+  .feature-title {
+    font-size: 1.5rem;
+  }
+  
+  .feature-box {
+    padding: 4.5%;
+  }
+  
+  .icon {
+    color: #ef8172;
+    margin-bottom: 1rem;
+  }
+  
+  .icon:hover {
+    color: #ff4c68;
+  }
+
+  @media (max-width: 1028px) {
+
+    #title {
+      text-align: center;
+    }
+  
+    .title-image {
+      position: static;
+      
+    }
+
+    
+  }
 
 /* Style the submit button */
 
