@@ -141,13 +141,13 @@
                         <label for="">Cantidad</label>
                         <div class="row text-center my-4">
                             <div class="col">
-                                <button type="button" class="btn btn-secondary btn-block" onclick="dec('quantity')">-</button>
+                                <button type="button" class="btn btn-secondary btn-block less_plus_btn" onclick="dec('quantity')">-</button>
                             </div>
                             <div class="col">
                                 <input name="quantity" type="text form-control" readonly value="0">
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-secondary btn-block" onclick="inc('quantity')">+</button>
+                                <button type="button" class="btn btn-secondary btn-block less_plus_btn" onclick="inc('quantity')">+</button>
                             </div>
                         </div>
 

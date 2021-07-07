@@ -146,8 +146,6 @@ class ProductController
                 $object->setProductImage3($productImage03);
                 $object->setProductImage4($productImage04);
 
-                print_r($object);
-
                 if (isset($_POST['add'])) {
                     $this->productDao->addRecord($object);
                     echo ("<script>window.location.replace('?c=Product&a=adminProduct&msg=add-success')</script>");

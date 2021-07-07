@@ -25,6 +25,17 @@ class SaleDetailDao
         }
     }
 
+    public function listSaleDetailsBySaleId($id)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM sales_detail WHERE SALE_ID = ?");
+            $stm->execute(array($id));
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function getLastId()
     {
         try {

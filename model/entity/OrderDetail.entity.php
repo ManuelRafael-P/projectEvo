@@ -5,20 +5,26 @@ class OrderDetail
     private $orderDetailId;
     private $userId;
     private $saleId;
+    private $transactionId;
     private $userFullName;
     private $shippingAddress;
+    private $phone;
+    private $invoiceNumber;
     private $orderStatus;
     private $deliveryDate;
     private $dateRegistry;
     private $dateUpdate;
 
-    public function __construct($orderDetailId, $userId, $saleId, $userFullName, $shippingAddress, $orderStatus, $deliveryDate, $dateRegistry, $dateUpdate)
+    public function __construct($orderDetailId, $userId, $saleId, $transactionId, $userFullName, $shippingAddress, $phone, $invoiceNumber, $orderStatus, $deliveryDate, $dateRegistry, $dateUpdate)
     {
         $this->orderDetailId = $orderDetailId;
         $this->userId = $userId;
         $this->saleId = $saleId;
+        $this->transactionId = $transactionId;
         $this->userFullName = $userFullName;
         $this->shippingAddress = $shippingAddress;
+        $this->phone = $phone;
+        $this->invoiceNumber = $invoiceNumber;
         $this->orderStatus = $orderStatus;
         $this->deliveryDate = $deliveryDate;
         $this->dateRegistry = $dateRegistry;
@@ -55,6 +61,16 @@ class OrderDetail
         return $this->saleId;
     }
 
+    public function setTransactionId($transactionId)
+    {
+        $this->transactionId = $transactionId;
+    }
+
+    public function getTransactionId()
+    {
+        return $this->transactionId;
+    }
+
     public function setUserFullName($userFullName)
     {
         $this->userFullName = $userFullName;
@@ -73,6 +89,26 @@ class OrderDetail
     public function getShippingAddress()
     {
         return $this->shippingAddress;
+    }
+
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    public function setInvoiceNumber($invoiceNumber)
+    {
+        $this->invoiceNumber = $invoiceNumber;
+    }
+
+    public function getInvoiceNumber()
+    {
+        return $this->invoiceNumber;
     }
 
     public function setOrderStatus($orderStatus)

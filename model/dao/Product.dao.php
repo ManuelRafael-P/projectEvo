@@ -25,6 +25,17 @@ class ProductDao
         }
     }
 
+    public function listProductById($id)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM products WHERE PRODUCT_ID = ?");
+            $stm->execute(array($id));
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function listProductImagesById($id)
     {
         try {
@@ -216,7 +227,8 @@ class ProductDao
             $stm = $this->pdo->prepare("UPDATE products SET 
             PRODUCT_CATEGORY_ID = ?,
             COLOR_ID = ?, 
-            PRODUCT_NAME = ?,  
+            PRODUCT_NAME = ?,
+            PRODUCT_DESCRIPTION = ?,  
             STOCK_SIZE_XXS = ?, 
             STOCK_SIZE_XS = ?, 
             STOCK_SIZE_S = ?, 
@@ -235,6 +247,7 @@ class ProductDao
                 $c->getProductCategoryId(),
                 $c->getColorId(),
                 $c->getProductName(),
+                $c->getProductDescription(),
                 $c->getStockSizeXxs(),
                 $c->getStockSizeXs(),
                 $c->getStockSizeS(),
