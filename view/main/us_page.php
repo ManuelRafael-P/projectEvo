@@ -1,8 +1,3 @@
-<div class="cabecera-nosotros text-center animate__animated animate__fadeIn">
-    <div class="center">
-        <h2 class="title-big">¿Quienes somos?</h2>
-    </div>
-</div>
 <div class="content animate__animated animate__fadeIn">
     <div class="container">
         <div class="row mt-3">

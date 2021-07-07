@@ -67,6 +67,7 @@ li {
 body {
     font-family: 'Raleway', sans-serif!important;
     overflow-x: hidden;
+    text-align:center;
 }
 
 img {
@@ -91,11 +92,14 @@ img {
     }
 }
 
+
+
 .preview-pic {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
+    
 }
 
 .preview-thumbnail.nav-tabs {
@@ -495,9 +499,16 @@ img {
 #navbar {
     background-color: var(--main-bg-color);
 }
+.ses{
+    font-family: 'Righteous', cursive;
+}
 
 #footer {
     background-color: var(--main-bg-color);
+}
+
+.footer_accounts{
+    color: white;
 }
 
 #ct {
@@ -596,7 +607,7 @@ img {
     font-size: 18px;
 }
 
-@media all and (min-width: 992px) {
+@media all and (min-width: 990px) {
     .navbar .nav-item .dropdown-menu {
         display: none;
     }
@@ -617,19 +628,220 @@ img {
 
 /*--------------------------- Register form                                     */
 
+.noborder{
+    border:0;
+}
 
 /* Style all input fields */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat-Bold";
+}
+.h2{
+    font-size: 4rem;
+    
+}
 
-/* input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-} */
+.h2pop{
+    padding-top: 6rem;
+    padding-bottom: 1rem;
+}
 
+
+
+/* Headings */
+
+.big-heading {
+    font-family: "Montserrat-Black";
+    font-size: 4rem;
+    line-height: 1.5;
+    padding-bottom: 3rem;
+  }
+
+  /*Containers*/
+  .container-fluid-navbar{
+    padding: 1% 15%;
+   
+  }
+
+  .container-produc-pop{
+      
+  }
+  .container-fluid{
+    padding: 1% 15%;
+   
+  }
+
+  /* Sections */
+
+.colored-section {
+    background-color: #ff4c68;
+    color: #fff;
+  }
+
+  .white-section {
+    background-color: #fff;
+  }
+
+  /* Navigation Bar */
+
+.navbar {
+  padding: 0 0 4.5rem;
+  
+  
+}
+#monnijeans-brand{
+    font-size: 3.5rem;
+}
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Montserrat-Light";
+}
+.navitm{
+    margin: 0px 10px;
+    padding-right: 0%;
+    padding-left: 0%;
+}
+
+.navitemstyle{
+    font-family: 'Roboto', sans-serif;
+}
+
+.less_plus_btn{
+    font-size: 3rem;
+}
+
+/* Title Section */
+
+#title {
+    background-color: #ff4c68;
+    color: #fff;
+    text-align: left;
+  }
+
+  #navvv{
+    background-color: #ff4c68;
+    color: #fff;
+    text-align: left;
+
+  }
+#text_tittle{
+    margin-top: 5rem;
+    text-align: left;
+}
+  
+  #title .container-fluid {
+    padding: 3% 15% 7%;
+  }
+
+  #navbar_div{
+
+padding-top: 3rem;
+  }
+  #title_div{
+      padding-bottom:16rem;
+  }
+
+  .section-heading {
+    font-size: 4rem;
+    line-height: 1.5;
+  }
+
+  .paypal_message{
+    font-family: 'Architects Daughter', cursive;
+  }
+  
+  #monnijeans-brand{
+
+    color: white;
+  }
+
+
+  /* Title Image */
+  
+  .title-image {
+    
+    
+    position: absolute;
+    right: 30%;
+    width: 60%;
+    
+  }
+/* Buttons */
+
+
+
+  #paypal_icon{
+    
+    width: 80%;
+  }
+
+  #title_button{
+      padding:0%;
+      width:50%;
+      
+  }
+
+  .btn-info{
+    background-color: #ff4c68;
+    border-color: #ff4c68;
+  }
+
+  /* Features Section */
+
+#features {
+    
+    position: relative;
+  }
+  #features_div{
+      margin-top: 0;
+  }
+  
+ 
+
+  .feature-title {
+    font-size: 1.5rem;
+  }
+  
+  .feature-box {
+    padding: 4.5%;
+  }
+  
+  .icon {
+    color: #ef8172;
+    margin-bottom: 1rem;
+  }
+  
+  .icon:hover {
+    color: #ff4c68;
+  }
+
+  @media (max-width: 1028px) {
+
+    #title {
+      text-align: center;
+    }
+
+    #navvv{
+        text-align: center;
+    }
+  
+    .title-image {
+      position: static;
+      
+    }
+
+    
+  }
 
 /* Style the submit button */
 
