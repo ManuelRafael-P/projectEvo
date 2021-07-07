@@ -1,8 +1,3 @@
-<div class="cabecera-productos text-center animate__animated animate__fadeIn">
-    <div class="center">
-        <h2 class="title-big">Nuestros productos</h2>
-    </div>
-</div>
 <div class="content">
     <div class="container">
         <div class="col-12">
