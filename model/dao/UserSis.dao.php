@@ -67,6 +67,23 @@ class UserSisDao
         }
     }
 
+    public function updateUserClient(UserSis $u)
+    {
+        try {
+            $sql = "UPDATE users SET USER_NAMES = ?, USER_SURNAMES = ?, USER_EMAIL = ?, USER_ADDRESS = ?, USER_PHONE = ?, DT_UPDATE = CURRENT_TIMESTAMP WHERE USER_ID = ?";
+            $this->pdo->prepare($sql)->execute(array(
+                $u->getNames(),
+                $u->getSurnames(),
+                $u->getEmail(),
+                $u->getAddress(),
+                $u->getPhone(),
+                $u->getUserId()
+            ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function updatePasswordByEmail($email, $password)
     {
         try {
@@ -75,6 +92,30 @@ class UserSisDao
                 md5($password),
                 $email
             ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function updatePasswordById($id, $password)
+    {
+        try {
+            $sql = "UPDATE users SET USER_PASSWORD = ? WHERE USER_ID = ?";
+            $this->pdo->prepare($sql)->execute(array(
+                $password,
+                $id
+            ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function validatePasswordById($id, $password)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE USER_ID = ? AND USER_PASSWORD = ? ");
+            $stm->execute(array($id, $password));
+            return $stm->fetchAll(PDO::FETCH_COLUMN);
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -91,12 +132,21 @@ class UserSisDao
         }
     }
 
-
+    public function listUserById($id)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT USER_ID, USER_NAMES, USER_SURNAMES, USER_EMAIL, USER_ADDRESS, USER_PHONE FROM users WHERE USER_ID = ?");
+            $stm->execute(array($id));
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 
     public function addUser(UserSis $u)
     {
         try {
-            $sql = "INSERT INTO users (USER_ID,USER_NAMES,USER_SURNAMES,USER_EMAIL,USER_PASSWORD,USER_ADDRESS,USER_PHONE) VALUES(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO users (USER_ID,USER_NAMES,USER_SURNAMES,USER_EMAIL,USER_PASSWORD,USER_ADDRESS,USER_PHONE,USER_TYPE,USER_ACCOUNT_VERIFIED) VALUES(?,?,?,?,?,?,?,?,?)";
             $this->pdo->prepare($sql)->execute(array(
                 $u->getUserId(),
                 $u->getNames(),
@@ -104,7 +154,21 @@ class UserSisDao
                 $u->getEmail(),
                 md5($u->getPassword()),
                 $u->getAddress(),
-                $u->getPhone()
+                $u->getPhone(),
+                0,
+                0
+            ));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function updateUserAccountConfirmed($email)
+    {
+        try {
+            $sql = "UPDATE users SET USER_ACCOUNT_VERIFIED = 1, DT_UPDATE = CURRENT_TIMESTAMP WHERE USER_EMAIL = ?";
+            $this->pdo->prepare($sql)->execute(array(
+                $email
             ));
         } catch (Exception $e) {
             die($e->getMessage());

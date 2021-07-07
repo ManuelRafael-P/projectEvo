@@ -25,12 +25,40 @@ class SaleDetailDao
         }
     }
 
+    public function listSaleDetailsBySaleId($id)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM sales_detail WHERE SALE_ID = ?");
+            $stm->execute(array($id));
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function getLastId()
     {
         try {
             $stm = $this->pdo->prepare("SELECT MAX(SALE_DETAIL_ID) FROM sales_detail");
             $stm->execute();
             return $stm->fetchAll(PDO::FETCH_COLUMN);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function addSaleDetail($saleId, $productId, $size, $quantity, $price, $subTotal)
+    {
+        try {
+            $stm = $this->pdo->prepare("INSERT INTO sales_detail (
+                SALE_ID, 
+                PRODUCT_ID, 
+                SIZE_SOLD, 
+                QUANTITY_SOLD, 
+                UNIT_PRICE, 
+                SALE_DETAIL_TOTAL
+                ) VALUES(?,?,?,?,?,?)");
+            $stm->execute(array($saleId, $productId, $size, $quantity, $price, $subTotal));
         } catch (Exception $e) {
             die($e->getMessage());
         }

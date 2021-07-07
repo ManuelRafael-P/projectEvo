@@ -18,7 +18,7 @@
         </div>
         <div class="my-2">
             <a href="?c=security&a=logOut">
-                <button type="button" class="btn btn-block btn-danger btn-xs">Cerrar sesión</button>
+                <button type="button" class="btn btn-block btn-danger btn-xs" style="font-size: 1.5rem;"><i class="fas fa-door-open"></i></button>
             </a>
         </div>
 
@@ -39,65 +39,53 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item" id="mod_admin">
-                    <a href="#" class="nav-link" id="cont_admin">
-                        <i class="nav-icon far fa-envelope"></i>
-                        <p>
-                            Administación del
-                            Sistema
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                <li class="nav-item">
+                    <a href="?c=Color&a=adminColor" id="adm-col" class="nav-link">
+                        <i class="fas fa-tint mx-2"></i>
+                        <p>Colores</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="?c=Color&a=adminColor" id="adm-col" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Colores</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?c=ProductCategory&a=adminProductCategory" id="adm-pro-cat" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Categorias de productos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?c=OrderDetail&a=adminOrderDetail" id="adm-ord-det" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Detalle de orden</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?c=SaleDetail&a=adminSaleDetail" id="adm-sal-det" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Detalle de ventas</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?c=Product&a=adminProduct" id="adm-pro" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Productos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?c=RestPswd&a=adminRestPswd" id="adm-rest" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Tokens de seguridad</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?c=Sale&a=adminSale" id="adm-sal" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Ventas</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?c=UserSis&a=adminUserSis" id="adm-use" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Usuarios</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="?c=ProductCategory&a=adminProductCategory" id="adm-pro-cat" class="nav-link">
+                        <i class="fas fa-copyright mx-2"></i>
+                        <p>Categorias de productos</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?c=OrderDetail&a=adminOrderDetail" id="adm-ord-det" class="nav-link">
+                        <i class="far fa-file-alt mx-2"></i>
+                        <p>Detalle de orden</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?c=SaleDetail&a=adminSaleDetail" id="adm-sal-det" class="nav-link">
+                        <i class="fas fa-paste mx-2"></i>
+                        <p>Detalle de ventas</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?c=Product&a=adminProduct" id="adm-pro" class="nav-link">
+                        <i class="fas fa-apple-alt mx-2"></i>
+                        <p>Productos</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?c=RestPswd&a=adminRestPswd" id="adm-rest" class="nav-link">
+                        <i class="fas fa-shield-alt mx-2"></i>
+                        <p>Tokens de seguridad</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?c=Sale&a=adminSale" id="adm-sal" class="nav-link">
+                        <i class="fas fa-shopping-cart mx-2"></i>
+                        <p>Ventas</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?c=UserSis&a=adminUserSis" id="adm-use" class="nav-link">
+                        <i class="fas fa-users mx-2"></i>
+                        <p>Usuarios</p>
+                    </a>
                 </li>
             </ul>
         </nav>

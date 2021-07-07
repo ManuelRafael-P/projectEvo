@@ -37,7 +37,6 @@ class SecurityController
         }
         require_once 'view/components/common/header.php';
         require_once 'view/security/login.php';
-        require_once 'view/components/common/footer.php';
     }
 
     public function registryPage()
@@ -53,7 +52,6 @@ class SecurityController
         }
         require_once 'view/components/common/header.php';
         require_once 'view/security/register_form.php';
-        require_once 'view/components/common/footer.php';
     }
 
     public function registryCompletePage()
@@ -122,7 +120,6 @@ class SecurityController
                 if (!empty($record)) {
                     $validation = $this->validateSelector($validator, $record[0]->REST_TOKEN);
                     if ($validation) {
-                        print_r($validation);
                         $this->userSisDao->updatePasswordByEmail($record[0]->REST_EMAIL, $password);
                         $this->restPswdDao->deleteRecord($record[0]->REST_EMAIL);
                     } else {
@@ -145,13 +142,41 @@ class SecurityController
 
     public function confirm_account()
     {
-        $selector = $_GET['selector'];
-        $validator = $_GET['validator'];
-        $this->model_security->validate_tokens_confirm_account($selector, $validator);
+        if (isset($_GET['selector']) && isset($_GET['validator'])) {
+            $selector = $_GET['selector'];
+            $validator = $_GET['validator'];
+            if (empty($selector) || empty($validator)) {
+                header("Location:?c=security&a=errorPage&msg=empty_tokens");
+            } else if (ctype_xdigit($selector) == false || ctype_xdigit($validator) == false) {
+                header("Location:?c=security&a=errorPage&msg=wrong_tokens");
+            } else {
+                $record = $this->restPswdDao->getRecordBySelectorAndTime($selector, date("U"));
+                $this->userSisDao->updateUserAccountConfirmed($record[0]->REST_EMAIL);
+                header("Location:?c=security&a=accountConfirmed");
+            }
+        }
+    }
+
+    public function sendAccountConfirmationRequest()
+    {
+        if (isset($_SESSION['user_info'])) {
+            $email = $_SESSION['user_info']['user_email'];
+            $names = $_SESSION['user_info']['user_full_name'];
+            if ($email != "" && $names != "") {
+                $r = $this->fillRestPswd($email);
+                $url = $this->generateUrl($r->getRestSelector(), $r->getRestToken(), "verifyAccount");
+                $e = new Email($names, $email, $url);
+                $this->restPswdDao->deleteRecord($r->getRestEmail());
+                $this->restPswdDao->addRecord($r);
+                $this->emailDao->sendEmailToConfirmAccount($e);
+                header("Location:?c=security&a=logOut");
+            }
+        }
+    }
+    public function accountConfirmed()
+    {
         require_once 'view/components/common/header.php';
-        require_once 'view/components/common/navbar.php';
         require_once 'view/security/confirm_account.php';
-        require_once 'view/components/common/footer.php';
     }
 
     public function resetPassword()
@@ -217,9 +242,7 @@ class SecurityController
             } else {
                 $id = $id + 1;
             }
-            print_r($id);
             $u = new UserSis($id, $_POST['inputNames'], $_POST['inputSurNames'], $_POST['inputEmail'], $_POST['inputPassword'], $_POST['inputAddress'], $_POST['inputPhone'], '', '', '', '');
-            print_r($u);
             if (empty($this->userSisDao->getUserByEmail($u->getEmail()))) {
                 $this->userSisDao->addUser($u);
                 $r = $this->fillRestPswd($u->getEmail());
@@ -236,8 +259,6 @@ class SecurityController
             echo ("error 1");
         }
     }
-
-    //lo del profe
 
     public function fillUser($o)
     {
@@ -263,10 +284,10 @@ class SecurityController
     public function generateUrl($selector, $token, $message)
     {
         if ($message == "resetRequest") {
-            $url = "http://localhost/Proyecto_EVO/?c=security&a=validateTokens&selector=" . $selector . "&validator=" . bin2hex($token);
+            $url = "http://localhost/projectEvo/?c=security&a=validateTokens&selector=" . $selector . "&validator=" . bin2hex($token);
             return $url;
         } else {
-            $url = "http://localhost/Proyecto_EVO/?c=security&a=confirm_account&selector=" . $selector . "&validator=" . bin2hex($token);
+            $url = "http://localhost/projectEvo/?c=security&a=confirm_account&selector=" . $selector . "&validator=" . bin2hex($token);
             return $url;
         }
     }

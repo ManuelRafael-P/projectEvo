@@ -6,10 +6,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-10">
-                    <h1>Administración de Colores</h1>
+                    <h1>Administración de Usuarios</h1>
                 </div>
                 <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Agregar Color</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Agregar Usuario</button>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -21,7 +21,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">En esta sección se podra agregar, editar y desactivar un color.</h3>
+                            <h3 class="card-title">En esta sección se podra agregar, editar y eliminar un usuario.</h3>
                         </div>
                         <div class="card-body">
                             <table id="tableSystem" class="table table-bordered table-hover">
@@ -92,7 +92,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Agregar Color</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Agregar Usuario</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -181,7 +181,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Editar Aula</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Editar Usuario</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
