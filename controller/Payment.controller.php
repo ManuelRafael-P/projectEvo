@@ -345,7 +345,6 @@ class PaymentController
 
         $pdf->Output('D', "comprobante.pdf", true);
     }
-
     public function generateId($letter, $number)
     {
         return $generated = $letter . strval(str_pad($number, 7, '0', STR_PAD_LEFT));
