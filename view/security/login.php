@@ -4,7 +4,7 @@
             <div class="col-sm-9 col-md-7 col-lg-6 mx-auto">
                 <div class="card card-signin">
                     <div class="card-body">
-                        <h3 class="alignCenter">Lorem store</h3>
+                        <h3 class="alignCenter">Monni Jeans</h3>
                         <div class="form-group">
                             <img id="profile_pic" src="assets/images/profile_man.png" alt="">
                         </div>
