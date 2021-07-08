@@ -276,15 +276,25 @@ class PaymentController
         /*output the result*/
 
         /*set font to arial, bold, 14pt*/
-        $pdf->SetFont('Arial', 'B', 20);
+        $pdf->SetFont('Arial', 'B', 35);
 
         /*Cell(width , height , text , border , end line , [align] )*/
+        
+        $pdf->Cell(50, 10, '', 0, 1);
+        $pdf->Cell(70, 5, 'MONNIJEANS', 0, 0);
+        $pdf->SetFont('Arial', 'B', 20);
+        $pdf->Cell(50, 10, '', 0, 1);
+        $pdf->Cell(50, 10, '', 0, 1);
 
         $pdf->Cell(50, 10, '', 0, 0);
         $pdf->Cell(90, 5, 'Comprobante de Pago', 0, 0);
 
         $pdf->Cell(50, 10, '', 0, 1);
         $pdf->Cell(50, 10, '', 0, 1);
+        $pdf->Cell(70, 5, 'RUC: 10770792091', 0, 0);
+
+        $pdf->Cell(50, 10, '', 0, 1);
+        
 
         $pdf->SetFont('Arial', 'B', 15);
         $pdf->Cell(70, 5, 'Detalle de Entrega', 0, 0);
@@ -327,20 +337,38 @@ class PaymentController
         $pdf->Cell(25, 6, 'SubTotal', 1, 1, 'C');/*end of line*/
         /*Heading Of the table end*/
         $pdf->SetFont('Arial', '', 10);
+        $acu=0;
         foreach ($this->saleDetailDao->listSaleDetailsBySaleId($sid) as $s) {
             $p = $this->productDao->listProductById($s->PRODUCT_ID);
             $pdf->Cell(30, 6, $p[0]['PRODUCT_ID'], 1, 0);
             $pdf->Cell(70, 6, $p[0]['PRODUCT_NAME'], 1, 0);
             $pdf->Cell(23, 6, $s->QUANTITY_SOLD, 1, 0, 'R');
-            $pdf->Cell(30, 6, "S/" . $s->UNIT_PRICE . ".00", 1, 0, 'R');
-            $pdf->Cell(25, 6, "S/" . $s->SALE_DETAIL_TOTAL . ".00", 1, 1, 'R');
+            $pu=round($s->UNIT_PRICE/1.18, 2);
+            $pdf->Cell(30, 6, "S/" . $pu , 1, 0, 'R');
+            $st=$s->QUANTITY_SOLD*$pu;
+            $pdf->Cell(25, 6, "S/" . $st , 1, 1, 'R');
+            $acu=$acu+$st;
         }
 
         $pdf->Cell(50, 10, '', 0, 1);
 
         $pdf->Cell(118, 6, '', 0, 0);
-        $pdf->Cell(25, 6, 'Total', 0, 0);
-        $pdf->Cell(45, 6, "S/" . $sale[0]['TOTAL'] . ".00", 1, 1, 'R');
+        $pdf->Cell(25, 6, 'Subtotal', 0, 0);
+        $pdf->Cell(45, 6, "S/" . $acu , 1, 1, 'R');
+
+        $pdf->Cell(50, 10, '', 0, 1);
+
+        $pdf->Cell(118, 6, '', 0, 0);
+        $pdf->Cell(25, 6, 'IGV', 0, 0);
+        $pdf->Cell(45, 6, "S/" . round($acu*0.18, 2) , 1, 1, 'R');
+
+        $pdf->Cell(50, 10, '', 0, 1);
+
+        $pdf->Cell(118, 6, '', 0, 0);
+        $pdf->Cell(25, 6, 'TOTAL', 0, 0);
+        $pdf->Cell(45, 6, "S/" . $sale[0]['TOTAL'] , 1, 1, 'R');
+
+        
 
 
         $pdf->Output('D', "comprobante.pdf", true);
